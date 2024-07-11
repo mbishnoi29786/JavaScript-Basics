@@ -88,3 +88,112 @@ console.log(typeof strVar);
 
 // it converts everthing to string while keeping the same value 
 // Null is going to be null, undefined will be undefined only the type will be converted to string
+
+
+
+//  ********* Operations **********
+
+// negative Assignment
+/*
+let aValue = 3;
+let negValue = -aValue;
+console.log(negValue);
+*/
+
+// Basic Maths Operations -->
+/*
+console.log(2+2);
+console.log(2-2);
+console.log(2*2);
+console.log(2**3);
+console.log(2/3);
+console.log(2%3);
+*/
+
+// Maths operation on String -->
+/*
+let str1 = "hello";
+let str2 = " World!";
+let str3 = str1 + str2;
+let str4 = str1 - str2;
+let str5 = str1 * str2;
+let str6 = str1 ** str2;
+let str7 = str1 / str2;
+let str8 = str1 % str2;
+
+console.log(str3); // hello World!
+console.log(str4); // NaN
+console.log(str5); // NaN
+console.log(str6); // NaN
+console.log(str7); // NaN
+console.log(str8); // NaN
+*/
+
+// More Problems come in these Cases:
+
+// Addtition
+/*
+console.log("2" +2);    // 22
+console.log(2 + "2");   // 22
+console.log("2" +"2");  // 22
+console.log("2" +2 + 3);  //223
+console.log(2 +2 + "a");  //4a
+console.log(2 +"2" + 3);  //223
+*/
+
+
+// Substraction
+/*
+console.log(2 - '2');  // 0
+console.log('2' - 2);  // 0
+console.log(2 - 2 - '3'); // -3
+console.log('3' - 2 - 3); // -2
+console.log(2 - 'a'); // NaN
+console.log(3 + '2' - 3); // 29
+*/
+
+
+// Multiplication
+/*
+console.log(2 * "3");  // 6
+console.log("2" * 3);  // 6
+console.log("2" * "3");  // 6
+console.log("2" * "3" * "4");  // 24
+console.log("2" * "3" * 4);  // 24
+console.log("2" * "3" * 'a');  // NaN
+*/
+
+// Divide
+/*
+console.log(2 / '3');  // 0.6666...
+console.log('2' / 3);  // 0.6666...
+console.log('2' / 'a');  // NaN
+console.log('2' / 'a');  // NaN
+console.log('2' / 3 / 4 / 1);  // 0.1666...
+*/
+
+// some more trickey outputs --> 
+/*
+console.log(true); // true
+console.log(+true); // 1
+// console.log(true+); // Error
+console.log(+''); // 0
+*/
+
+// Not a recommended way:-
+/*
+let num1, num2, num3;
+num1 = num2 = num3 = 2+2
+console.log(num1);
+*/
+
+
+// Increment Operator
+
+// postfix operator
+let x = 100;
+let y = x++       // value of x first assigned to y and than incremented by 1. At this point the value fo x is 101 and y is 100
+let z = ++x       // there will be an increment in the value of x first and then it will be assigned to z. at this point value of x is 102 and y is 100 and z is 102
+
+
+console.log(`x : ${x} and y : ${ y}  and z : ${x}`);
