@@ -5,8 +5,14 @@
 // Data Types -->
 // 2 types --> 1. Primitive   2. Non-Primitive
 // 1. Primitive --> there are 7 premitive data type : 1.Number 2.BigInt 3.String 4.Boolean 5.Null 6.Undefined 7.Symbol
-// 2. Non-Primitive --> 1.Object
+// 2. Non-Primitive --> 1.Object 2.Array 3.Functions
 
 // Null --> The result of typeof null is "object". That’s an officially recognized error in typeof, coming from very early days of JavaScript and kept for compatibility. Definitely, null is not an object. It is a special value with a separate type of its own. The behavior of typeof is wrong here.
 
 // Symbol --> for uniqueness
+/* 
+//  for example
+let id = Symbol('123');
+let anotherId = Symbol('123');
+console.log(id === anotherId); // false
+ */
