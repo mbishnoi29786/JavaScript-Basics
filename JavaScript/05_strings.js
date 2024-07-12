@@ -1,4 +1,4 @@
-//  Strings -->
+//  Strings --> The String() constructor creates String objects. When called as a function, it returns primitive values of type String.
 
 // const myName = 'Manish';
 // const repoCount = 4;
