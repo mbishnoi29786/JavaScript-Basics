@@ -27,7 +27,7 @@ const gameName = new String('Manish123');
 // we cannot provide negative value to the string if we give it will just start from the index till the second number indicate.
 // if we provide the first index bigger than the second it will still takes the lower one as first and the higher one second and create the string in the way it was return i will not reverse it.
 
-// const anoString = gameName.slice(4, -2);  // 23
+// const anoString = gameName.slice(4, -2);  // sh1 
 // console.log(anoString);  // Negative values are allowed here. these value will start from the end. it will give blank answer when it does not find inbetween the given bound
 
 
@@ -36,10 +36,54 @@ const gameName = new String('Manish123');
 // there are other methods in like trimStart() and trimEnd() to remove spaces from start and end
 // it does not remove the space inbetween 2 words
 
-const url = "https://manish.com/manish%20bishnoi/"
-console.log(url.replace('%20', '-'));
+// const url = "https://manish.com/manish%20bishnoi/"
+// console.log(url.replace('%20', '-'));
 
-console.log(url.includes('manish'));  //true
 
-const aVaribale = 'Hello World How is you? ';
-console.log(aVaribale.split(' '));  // it splits the given string according to the value provided. it returns an array.
+
+// String.prototype.includes() -->
+// console.log(url.includes('manish'));  //true
+// syntax 
+// includes(searchString)
+// includes(searchString, position)
+/*
+const sentence = 'The quick brown fox jumps over the lazy dog.';
+
+const word = 'fox';
+
+console.log(
+  `The word "${word}" ${
+    sentence.includes(word) ? 'is' : 'is not'
+  } in the sentence`,
+);
+// Expected output: "The word "fox" is in the sentence"
+*/
+
+
+// String.prototype.split() -->
+// const aVaribale = 'Hello World How is you? ';
+// console.log(aVaribale.split(' '));  // it splits the given string according to the value provided. it returns an array.
+
+// const str1 = "Hello";
+// const str2 = "World";
+// console.log(str2.concat(',  ',str1));  // used to concat 2 or n number of trings together. this function can only be used on string and the result will also be a string.
+
+
+// String.prototype.endsWith()
+// The endsWith() method of String values determines whether a string ends with the characters of this string, returning true or false as appropriate.
+
+/*
+const str1 = 'Cats are the best!';
+
+console.log(str1.endsWith('best!'));
+// Expected output: true
+
+console.log(str1.length)
+console.log(str1.endsWith('best', 17));  // we can enter the ending index or position where we want to check
+// Expected output: true
+
+const str2 = 'Is this a question?';
+
+console.log(str2.endsWith('question'));
+// Expected output: false
+*/
