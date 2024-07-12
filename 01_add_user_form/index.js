@@ -18,7 +18,6 @@ function addUser(event) {
 
     existingUsers = [...existingUsers, newUser]
     updateExistingUser(existingUsers)
-    console.log(existingUsers);
 }
 
 
@@ -41,9 +40,18 @@ function updateExistingUser(users){
 
 // to search users
 
-document.getElementById('seachAllCurrentUsers').addEventListener('input', searhUsers);
+document.getElementById('searchAllCurrentUsers').addEventListener('input', searchUsers);
 
-function searhUsers(){
-    let searchKeyword = document.getElementById('seachAllCurrentUsers').value;
+function searchUsers(){
+    let searchKeyword = document.getElementById('searchAllCurrentUsers').value;
     
+    for(let i = 0; i<existingUsers.length; i++){
+
+    }
+
+
+    function newSearch(){
+
+    }
+
 }
