@@ -99,4 +99,17 @@ let str1 = 'The quick brown fox jumps over the Lazy dog.';
 // console.log(str1.indexOf('The'));  // same as search method but we cannot use regression expression in it. to use it case insenstively we can use toUpperCase or toLowerCase.
 // console.log(str1.toLowerCase().includes('lazy')); // it returns true if the string is found and false if not found.
 // includes --> case sensitive and does not support regression exp
-console.log(str1.match(/[a-z]/));  // The match() method of String values retrieves the result of matching this string against a regular expression.
+// console.log(str1.match(/[a-z]/));  // The match() method of String values retrieves the result of matching this string against a regular expression.
+console.log(str1.repeat(1).split(('.')));  // the split() method is used to divide a string into an array of substrings based on a specified separator.
+// syntax --> string.split(separator, limit); 
+// example 2->
+/*
+const str = "apple,banana,orange,grape";
+const result = str.split(",", 2);
+
+console.log(result); // Output: ["apple", "banana"] 
+*/
+// The split() method returns a new array containing the substrings, created by splitting the original string at each occurrence of the separator.
+// Important Points:
+// The split() method does not modify the original string.
+// If the separator is an empty string (""), the string will be split between each character.
