@@ -90,12 +90,13 @@ console.log(str2.endsWith('question'));
 
 
 let str1 = 'The quick brown fox jumps over the Lazy dog.';
-console.log(str1.length);
-console.log(str1.at(5)); // takes negative as well as positive values. negatives starts from end. takes integer as an input.
+// console.log(str1.length);
+// console.log(str1.at(5)); // takes negative as well as positive values. negatives starts from end. takes integer as an input.
 // console.log(str1.charAt(5)); // same as str1.at(). is supported widly because it was introduced earlier in ECMA while at is newly released in 2021 and as of mid 2024 it is not supported by most browsers.
 // console.log(str1.endsWith('dog', 43));   // the second parameter tells at which point we want i considert ends.
 // console.log(str1.search(/the/i)); // Case insensitive search using regex. returns the index of first char where it found the entered string. the every word of the string must be present otherwise it will give -1. 
 // In JavaScript, the search() method is used to search for a substring within a string and returns the position of the first occurrence of the specified substring, or -1 if the substring is not found. It is similar to the indexOf() method, but it can also accept a regular expression as its parameter.
-console.log(str1.indexOf('The'));  // same as search method but we cannot use regression expression in it. to use it case insenstively we can use toUpperCase or toLowerCase.
-console.log(str1.toLowerCase().includes('lazy')); // it returns true if the string is found and false if not found.
+// console.log(str1.indexOf('The'));  // same as search method but we cannot use regression expression in it. to use it case insenstively we can use toUpperCase or toLowerCase.
+// console.log(str1.toLowerCase().includes('lazy')); // it returns true if the string is found and false if not found.
 // includes --> case sensitive and does not support regression exp
+console.log(str1.match(/[a-z]/));  // The match() method of String values retrieves the result of matching this string against a regular expression.
