@@ -18,6 +18,9 @@ function addUser(event) {
 
     existingUsers = [...existingUsers, newUser]
     updateExistingUser(existingUsers)
+    document.getElementById('name').value = ('');
+    document.getElementById('email').value = ('');
+    document.getElementById('phone').value = ('');
 }
 
 
@@ -43,15 +46,34 @@ function updateExistingUser(users){
 document.getElementById('searchAllCurrentUsers').addEventListener('input', searchUsers);
 
 function searchUsers(){
-    let searchKeyword = document.getElementById('searchAllCurrentUsers').value;
-    
+    let searchKeyword = document.getElementById('searchAllCurrentUsers').value.toLowerCase();
+    /*  using for loop -->
+    let filteredUsers = [];
     for(let i = 0; i<existingUsers.length; i++){
-
-    }
-
-
-    function newSearch(){
-
-    }
-
+        //to increate readability we can also use it like
+        let name = existingUsers[i].name.toLowerCase();
+        let email = existingUsers[i].email.toLowerCase();
+        let phone = existingUsers[i].phone;
+        
+        
+        // if(existingUsers[i].name.toLowerCase().includes(searchKeyword) || existingUsers[i].email.toLowerCase().includes(searchKeyword) || existingUsers[i].phone.includes(searchKeyword)){
+            // filteredUsers.push(existingUsers[i]);
+        // }
+        
+        
+        if(name.includes(searchKeyword) || email.includes(searchKeyword) || phone.includes(searchKeyword) ){
+            filteredUsers.push(existingUsers[i]);
+        }
+        updateExistingUser(filteredUsers);
+        }
+        */
+        
+        // using arrays method filter 
+        let filterMethod = existingUsers.filter(filteredUsers1 =>{
+            return filteredUsers1.name.toLowerCase().includes(searchKeyword) || 
+            filteredUsers1.email.toLowerCase().includes(searchKeyword) ||
+            filteredUsers1.phone.toLowerCase().includes(searchKeyword)
+        })
+        updateExistingUser(filterMethod);
+        
 }
