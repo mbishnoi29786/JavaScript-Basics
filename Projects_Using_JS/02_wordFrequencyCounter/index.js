@@ -7,8 +7,9 @@ let demoInput = 'the quick brown fox jumps over the   lazy dog. dog dog  '
 let charaCount = demoInput.trim().length;
 // console.log(charaCount);
 // word extraction  --> extraction of all words from  
-let wordsInPara = demoInput.split(' ').filter(Boolean);   // using boolean will remove all the falsy value
+let wordsInPara = demoInput.split(/\s+|\./).filter(Boolean);   // using boolean will remove all the falsy value 
 // let wordsInPara1 = demoInput.split(/\s+/);  // this one is using regular expression. here s represent character class space and + represent one or more
+// console.log(`Words In Para: ${wordsInPara}`);
 // console.log(wordsInPara);
 
 // word Count --> total number of words in the para
@@ -33,7 +34,7 @@ for(let i = 0; i<wordCount; i++){
         wordFrequency[wordsInPara[i]] = count;
     }
 }
-// console.log(wordFrequency);
+console.log(wordFrequency);
 
 
 
