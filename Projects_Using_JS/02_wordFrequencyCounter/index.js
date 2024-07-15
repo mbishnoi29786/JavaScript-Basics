@@ -1,21 +1,26 @@
 // let inputPara = document.getElementById('inputPara').value;  // in node we cannot define document
 
 //Demo variable -->
-let demoInput = 'the quick brown-boy fox jumps over the   lazy dog. dog dog . <> @#%  '
+let demoInput = "the quick brown-boy's fox jumps over the. ...  lazy dog.dog dog dog . <> @.#%  ";
 
 // charaCount --> character count include spaces, line breaks etc
 let charaCount = demoInput.trim().length;
-// console.log(charaCount);
-// word extraction  --> extraction of all words from  
+
+// word extraction  --> extraction of all words from the string only words. in this way the . will be removed
+
 let wordsInPara = demoInput.split(/\s+|\./).filter(Boolean);   // using boolean will remove all the falsy value 
 let wordsInPara1 = demoInput.split(/\s+/);  // this one is using regular expression. here s represent character class space and + represent one or more
 // console.log(`Words In Para: ${wordsInPara}`);
-console.log(wordsInPara1);
-let filteredPara = demoInput.split(/\s+/).filter(word => word.trim() !== '' && !(/[.,\/#!$%\^&*();:{}=\-_`~'"<>]/.test(word)));
-// console.log(filteredPara);
+// console.log(wordsInPara);
+
 // word Count --> total number of words in the para
 let wordCount = wordsInPara.length;
 // console.log(wordCount);
+
+// Word Extraction better way --> in this way we can handle even the special charatcters and can keep count of them as well
+let filteredPara = demoInput.split(/\s+/).filter(word => word.trim() !== '' && !(/[.,\/#!$%\^&*();:{}=\-_`~'"<>]/.test(word))); // it's better way but it will exclude all the special character form the array.
+let filteredPara1 = demoInput.split(/(\s+|[.,\/#!$%\^&*();:{}=\-_`~"<>])/).filter(word => word.trim() !== '');  // in this method every special character will be separated from the string and will be kept in the array so we can also keep record of those as well.
+console.log(filteredPara1);
 
 
 // word frequency -- how many times a word has come in the para
