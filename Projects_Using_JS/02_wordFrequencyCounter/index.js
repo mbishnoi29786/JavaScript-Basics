@@ -25,27 +25,66 @@ console.log(filteredPara1);
 
 // word frequency -- how many times a word has come in the para
 let wordFrequency = {};
-for(let i = 0; i<wordCount; i++){
+for(let i = 0; i<filteredPara1.length; i++){
     let count = 1;
-    for (let k = i+1; k < wordCount; k++) {
-        if(wordsInPara[i] === null){
+    for (let k = i+1; k < filteredPara1.length; k++) {
+        if(filteredPara1[i] === null){
             continue;
         }
-        else if(wordsInPara[i]===wordsInPara[k]){
+        else if(filteredPara1[i]===filteredPara1[k]){
             count++;
-            wordsInPara[k] = null;
+            filteredPara1[k] = null;
         }
     }
-    if(wordsInPara[i] !== null){
-        wordFrequency[wordsInPara[i]] = count;
+    if(filteredPara1[i] !== null){
+        wordFrequency[filteredPara1[i]] = count;
     }
 }
-// console.log(wordFrequency);
+console.log(wordFrequency);
+
+// longest word in the para -->
+let wordsOnly = filteredPara1.filter(word => !/[.,\/#!$%\^&*();:{}=\-_`~"<>]/.test(word));
+const longestWord = wordsOnly.reduce((longest, current) => longest.length < current.length ? current : longest, "");
+console.log("Longest word:", longestWord);
 
 
 
+// correct code -->
+/*
+// Demo variable -->
+let demoInput = "the quick brown-boy's fox jumps over the. ...  lazy dog.dog dog dog . <> @.#%  ";
 
+// Character count (including spaces, line breaks, etc.)
+let charaCount = demoInput.trim().length;
 
+// Word extraction (including punctuation as separate elements)
+let filteredPara1 = demoInput.split(/(\s+|[.,\/#!$%\^&*();:{}=\-_`~"<>])/).filter(word => word.trim() !== '');
+console.log("Words and punctuation:", filteredPara1);
+
+// Word count (correct calculation based on filteredPara1)
+let wordCount = filteredPara1.length;
+console.log("Word count:", wordCount);
+
+// Word frequency calculation
+let wordFrequency = {};
+filteredPara1.forEach(word => {
+    if (/[.,\/#!$%\^&*();:{}=\-_`~"<>]/.test(word)) {
+        // It's a punctuation mark
+        wordFrequency[word] = (wordFrequency[word] || 0) + 1;
+    } else {
+        // It's a word
+        word = word.toLowerCase(); // Optional: normalize case
+        wordFrequency[word] = (wordFrequency[word] || 0) + 1;
+    }
+});
+console.log("Word frequency:", wordFrequency);
+
+// Longest word (ignoring punctuation)
+let wordsOnly = filteredPara1.filter(word => !/[.,\/#!$%\^&*();:{}=\-_`~"<>]/.test(word));
+const longestWord = wordsOnly.reduce((longest, current) => longest.length < current.length ? current : longest, "");
+console.log("Longest word:", longestWord);
+
+*/
 
 
 
