@@ -50,10 +50,18 @@ console.log("Longest word:", longestWord);
 */
 
 // reverse the para -->
-let reversedWords = demoInput.split('').reverse().join('');
-console.log(reversedWords);
+const reversedText = demoInput.split('').reverse().join('');
+console.log(reversedText);
 
+//Palindrom or not -->
+const palindrom = demoInput === reversedText; // it will check whole para is palindrom or not 
+console.log(palindrom);
 
+// upper case para -->
+const allLower = demoInput.toLowerCase();
+const allUpper = demoInput.toUpperCase();
+console.log(allLower);
+console.log(allUpper);
 
 
 
