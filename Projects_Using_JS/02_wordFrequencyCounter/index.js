@@ -63,6 +63,14 @@ const allUpper = demoInput.toUpperCase();
 console.log(allLower);
 console.log(allUpper);
 
+// unique word --> don't have any idea do it tomorrow
+
+//vowel or consonent -->
+let vowelWords = demoInput.match(/[aeiouAEIOU]/g)?.length || 0 ;
+console.log(vowelWords);
+
+let consonantWords = demoInput.match(/[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]/g)?.length || 0;
+console.log(consonantWords);
 
 
 // correct code for longest word -->
