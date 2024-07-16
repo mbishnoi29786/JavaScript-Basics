@@ -72,6 +72,9 @@ console.log(vowelWords);
 let consonantWords = demoInput.match(/[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]/g)?.length || 0;
 console.log(consonantWords);
 
+// sentence count --->
+let totalSentences = demoInput.split(/[.?!]/).filter(sentence => sentence.trim().length > 0).length;
+console.log(totalSentences);
 
 // correct code for longest word -->
 /*
