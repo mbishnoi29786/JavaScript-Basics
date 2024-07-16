@@ -43,13 +43,21 @@ for(let i = 0; i<filteredPara1.length; i++){
 console.log(wordFrequency);
 
 // longest word in the para -->
+/* Achieved today -->
 let wordsOnly = filteredPara1.filter(word => !/[.,\/#!$%\^&*();:{}=\-_`~"<>]/.test(word));
 const longestWord = wordsOnly.reduce((longest, current) => longest.length < current.length ? current : longest, "");
 console.log("Longest word:", longestWord);
+*/
+
+// reverse the para -->
+let reversedWords = demoInput.split('').reverse().join('');
+console.log(reversedWords);
 
 
 
-// correct code -->
+
+
+// correct code for longest word -->
 /*
 // Demo variable -->
 let demoInput = "the quick brown-boy's fox jumps over the. ...  lazy dog.dog dog dog . <> @.#%  ";
