@@ -1,5 +1,5 @@
 // all the data with a demo input using node -->
-let demoInput = "Hi! how are you? you looks fine tough. It's really great to meet you.";
+let demoInput = "Hi! how are you? you looks fine tough. It's really great to meet you mam . <stdio.h> is a header-file";
 
 /*
 // functionalities to achieve -->
@@ -21,4 +21,37 @@ let demoInput = "Hi! how are you? you looks fine tough. It's really great to mee
 let charCount = demoInput.trim().length;
 
 // Word Count -->
-let wordCount = demoInput.filter(word =>)
+let wordSymbolCount = demoInput.split(/(\s+|[.?!<>\/^&*()\@#!$%`~;:!@#%&{}",])/).filter(word => word.trim() !== "");
+
+// Word Frequency -->
+let wordsFrequency = {};
+wordSymbolCount.forEach((word) => {
+    if (wordsFrequency[word] == word){
+        wordsFrequency[word]++;
+    }
+    else{
+        wordsFrequency[word] = 1;
+    }
+});
+
+
+// Longest word --> 
+// let wordCountOnly = wordSymbolCount.filter()
+// console.log(wordCountOnly);
+
+
+// Reverse text -->
+let reversedPara = demoInput.split('').reverse().join('');
+
+
+// Palindrom Check -->
+let reverseWords = demoInput.split('').reverse().join("").split(' ').reverse();
+console.log(reverseWords);
+// let palindrom = {};
+// reverseWords.forEach((word ,index) =>{
+//     if(word === demoInput.split(' ')[index]){
+//         palindrom[index] = [word];
+//     }
+// })
+
+// console.log(palindrom);
