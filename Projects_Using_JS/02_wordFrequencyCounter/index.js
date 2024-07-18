@@ -1,5 +1,5 @@
 // all the data with a demo input using node -->
-let demoInput = "Hi! how are you? you looks fine tough. It's really great to meet you mam . <stdio.h> is a header-file. Emergency 101. Naman aman pop";
+let demoInput = "Hi! how are you? you looks fine tough. It's really great to meet you mam . <stdio.h> is a header-file. Emergency 101. Naman aman pop &%^. man every thing in this para is unique. that's a drag i have to add new input along with the existing one to make it bigger.";
 
 /*
 // functionalities to achieve -->
@@ -25,33 +25,34 @@ let wordSymbolCount = demoInput.split(/(\s+|[.?!<>\/^&*()\@#!$%`~;:!@#%&{}",])/)
 
 // Word Frequency -->
 let wordsFrequency = {};
-wordSymbolCount.forEach((word) => {
-    if (wordsFrequency[word] == word){
+wordSymbolCount.forEach(word => {
+    if(wordsFrequency[word]){
         wordsFrequency[word]++;
-    }
-    else{
-        wordsFrequency[word] = 1;
-    }
-});
+}
+else{
+    wordsFrequency[word] = 1;
+}
+})
 
+
+// Regular Expression and method to get only words to get only word ->
+let regEx = /[.,?!<>]/;
+let filteredWords = demoInput.toLowerCase().split(' ').filter(word => !word.match(regEx));  // filter function takes a callback function so it does not accespts a regEx so we used it this way.
 
 // Longest word --> 
-// let wordCountOnly = wordSymbolCount.filter()
-// console.log(wordCountOnly);
+let longestWord = demoInput.split(' ').reduce((longest , currentWord)=> currentWord.length > longest.length ? currentWord : longest , "" );
 
 
-// Reverse Whole papa  -->
+// Reverse Whole para  -->
 let reversedPara = demoInput.split('').reverse().join('');
-console.log(reversedPara);
+
 // Reverse Sentence Vice -->
-let reversedSentences = demoInput.split(/s*|[.]/).reverse().join();
-console.log(reversedSentences);
+let reverseBySentence = demoInput.split(regEx).map(ele => ele.split(' ').reverse().join(' ')).join(' ');  // when we use split the thing we try to split gets discarded.
 
 
 // Palindrom Check -->
-let regEx = /[.,?!<>]/;
+
 let reverseWords = demoInput.toLowerCase().split('').reverse().join("").split(' ').reverse().filter(word => !word.match(regEx));
-let filteredWords = demoInput.toLowerCase().split(' ').filter(word => !word.match(regEx));  // filter function takes a callback function so it does not accespts a regEx so we used it this way.
 let palindromWords = [];
 reverseWords.forEach((word ,index) =>{
     if(word === filteredWords[index]){
@@ -62,3 +63,17 @@ reverseWords.forEach((word ,index) =>{
         palindromWords = [...palindromWords, filteredWords[index]];
     }
 })
+
+
+// upperCase and lowerCase change -->
+let allUpperCase = demoInput.toUpperCase();
+
+let allLowerCase = demoInput.toLowerCase();
+
+
+// unique words -->
+let uniqueWords = Object.keys(wordsFrequency).filter(word => wordsFrequency[word] === 1);
+
+// vowel and consonent count -->
+
+
