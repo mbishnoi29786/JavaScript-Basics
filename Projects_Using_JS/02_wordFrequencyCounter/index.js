@@ -1,5 +1,5 @@
 // all the data with a demo input using node -->
-let demoInput = "Hi! how are you? you looks fine tough. It's really great to meet you mam . <stdio.h> is a header-file";
+let demoInput = "Hi! how are you? you looks fine tough. It's really great to meet you mam . <stdio.h> is a header-file. Emergency 101. Naman aman pop";
 
 /*
 // functionalities to achieve -->
@@ -40,18 +40,25 @@ wordSymbolCount.forEach((word) => {
 // console.log(wordCountOnly);
 
 
-// Reverse text -->
+// Reverse Whole papa  -->
 let reversedPara = demoInput.split('').reverse().join('');
+console.log(reversedPara);
+// Reverse Sentence Vice -->
+let reversedSentences = demoInput.split(/s*|[.]/).reverse().join();
+console.log(reversedSentences);
 
 
 // Palindrom Check -->
-let reverseWords = demoInput.split('').reverse().join("").split(' ').reverse();
-console.log(reverseWords);
-// let palindrom = {};
-// reverseWords.forEach((word ,index) =>{
-//     if(word === demoInput.split(' ')[index]){
-//         palindrom[index] = [word];
-//     }
-// })
+let regEx = /[.,?!<>]/;
+let reverseWords = demoInput.toLowerCase().split('').reverse().join("").split(' ').reverse().filter(word => !word.match(regEx));
+let filteredWords = demoInput.toLowerCase().split(' ').filter(word => !word.match(regEx));  // filter function takes a callback function so it does not accespts a regEx so we used it this way.
+let palindromWords = [];
+reverseWords.forEach((word ,index) =>{
+    if(word === filteredWords[index]){
+        // using push method of array which is mutative 
+        // palindromWords.push(filteredWords[index]);
 
-// console.log(palindrom);
+        // using spread operator
+        palindromWords = [...palindromWords, filteredWords[index]];
+    }
+})
