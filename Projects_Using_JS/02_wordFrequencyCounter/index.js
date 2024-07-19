@@ -1,5 +1,5 @@
 // all the data with a demo input using node -->
-let demoInput = "Hi! How are you? you looks fine tough. It's really great to meet you mam . <stdio.h> is a header-file. Emergency 101. Naman aman pop &%^. man every thing in this para is unique. that's a drag i have to add new input along with the existing one to make it bigger. /<>/. ";
+let demoInput = "Hi! How are you? you looks fine tough. Mr. Manish It's really great to meet you mam . <stdio.h> is a header-file. Emergency 101. Naman aman pop &%^. man every thing in this para is unique. that's a drag i have to add new input along with the existing one to make it bigger. /<>/. ";
 
 /*
 // functionalities to achieve -->
@@ -87,12 +87,15 @@ let consonantCount = demoInput.match(/[bcdfghjklmnpqrstvwxyz]/ig)?.length || 0;
 let simpleSentencesRegEx = /[A-Z][^.?!]*[.!?]/g;  // this regularExpression first checks if the sentence starts with an Capital letter and then  it  Matches zero or more characters that are not ., ?, or !. This allows for matching the content of the sentence, excluding the sentence-ending punctuation and in the end  Matches one of ., ?, or !, which signifies the end of the sentence. Global flag ensures all matches are found, not just the first one.
 let simpleSentenceExtracted = demoInput.match(simpleSentencesRegEx);
 let simpleSentenceCount = simpleSentenceExtracted.length;
+console.log(simpleSentenceExtracted);
 
 // to handle the edge cases like what if while addressing a persion with a title Mr. , Ms. and  numeric values (e.g., "The price is $5.00."), where periods are not necessarily sentence boundaries. 
-let edgeCasesSentencesRegEx = /(?<!)/;
+let edgeCasesSentencesRegEx = /(?<!\b(?:Mr|Dr|Ms|etc)\.)[^.?!]+[.!?]+/g;
+let edgeCaseSentenceExtracted = demoInput.match(edgeCasesSentencesRegEx);
+console.log(edgeCaseSentenceExtracted);
 
 // took help from chatGPT -->
-let sentences = demoInput.split(/(?<!\b(?:Mr|Dr|Ms|etc)\.)[.!?](?=\s+[A-Z])/);
+let sentences = demoInput.split(/(?<!\b(?:Mr|Dr|Ms|etc)\.)[.!?](?=\s+[A-Z])/g);
 sentences = sentences.map(sentence => sentence.trim());
 
 // console.log(sentences);
