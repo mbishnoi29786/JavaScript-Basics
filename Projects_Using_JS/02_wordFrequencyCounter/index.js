@@ -79,7 +79,7 @@ function sentencesReversed(text)
 
 function findPalindroms(text)
 {
-    let reversedWords = text.toLowerCase().split('').reverse().join('').split(' ').reverse().filter(word => !word.split(regExForSplittingUsingPunctuation).match(regExForSplittingUsingPunctuation));
+    let reversedWords = text.toLowerCase().split('').reverse().join('').split(' ').reverse().filter(word => !word.match(regExForSplittingUsingPunctuation));
 
     let allWordsWithoutPunctuation = text.split(' ').filter(word => !word.split(regExForSplittingUsingPunctuation).match(regExForSplittingUsingPunctuation));
 
