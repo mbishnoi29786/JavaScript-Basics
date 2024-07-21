@@ -24,7 +24,7 @@ analyze();
 function analyze(){
 
     // let demoInput = document.getElementById('inputPara').value;
-    let demoInput = "Hi! How are you? you looks fine tough. Mr. Manish It's really great to meet you mam. <stdio.h> is a header-file. Emergency 101. Naman aman pop &%^. man every thing in this para is unique. that's a drag i have to add new input along with the existing one to make it bigger. /<>/. ";
+    let demoInput = "Hi! How are you? you looks fine tough. Mr. Manish It's really great to meet you mam. <stdio.h> is a header-file. Emergency 101. Naman aman pop &%^. man every thing in this para is unique. that's a drag i have to add new input along with the existing one to make it bigger. /<>/. $ {hlw}(hlw) {mamam} ";
 
     // Character Count -->
     let charCount = demoInput.trim().length;
@@ -45,7 +45,7 @@ function analyze(){
 
 
     // Regular Expression and method to get only words to get only word ->
-    let regEx = /[.,?!<>\/]/;
+    let regEx = /[.,?!<>\/$(){}]/;
     let filteredWords = demoInput.toLowerCase().split(' ').map((ele) => ele.split(regEx)).flat(1).filter(Boolean);  // filter function takes a callback function so it does not accespts a regEx so we used it this way.
 
     // Longest word --> 
@@ -61,7 +61,7 @@ function analyze(){
 
     // Palindrom Check -->
     let reverseWords = demoInput.toLowerCase().split('').reverse().join("").split(' ').reverse().map((ele) => ele.split(regEx)).flat(1).filter(Boolean);
-    console.log(reverseWords);
+    // console.log(reverseWords);
     let palindromWords = [];
     reverseWords.forEach((word ,index) =>{
         if(word === filteredWords[index]){
@@ -72,7 +72,7 @@ function analyze(){
             palindromWords = [...palindromWords, filteredWords[index]];
         }
     })
-    // console.log(palindromWords);
+    console.log(palindromWords);
 
     // upperCase and lowerCase change -->
     let allUpperCase = demoInput.toUpperCase();

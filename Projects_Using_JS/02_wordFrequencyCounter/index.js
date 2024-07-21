@@ -4,7 +4,7 @@ function analyze()
 {
     // fetching the input from the paragraph -->
     let inputParagraph = document.getElementById('inputPara').value.trim();
-    findPalindroms(inputParagraph);
+
     if(inputParagraph === '')
     {
         // if input is empty -->
@@ -31,8 +31,10 @@ function analyze()
     displayResults(charCount, wordCount, wordsFrequency, longestWord, reversedPara, reversedSentences, palindroms, allUpperCase, allLowerCase, uniqueWords, vowelsCount, consonantsCount, sentencesCount);
 }
 
-const regExForSplittingWordsAndSymbols = /(\s+|[.?!<>\/^&*()\@#!$%`~;:!@#%&{}",])/;
-const regExForSplittingUsingPunctuation = /[.,?!<>]/;
+const regEx_for_splitting_wordsAndSymbols = /(\s+|[.?!<>\/^&*()\@#!$%`~;:!@#%&{}",])/;
+const regEx_for_splitting_using_punctuationAndSymbol = /[.,?!<>\/$(){}]/;
+const regEx_for_splitting_punctuation_only = /[.?!]/;
+const regEx_for_splitting_sentences =  /(?<!\b(?:Mr|Dr|Ms|etc)\.)[^.?!]+[.!?]+/g;
 
 function countCharacters(text) 
 {
@@ -41,21 +43,21 @@ function countCharacters(text)
 
 function countWords(text)
 {
-    return text.split(regExForSplittingWordsAndSymbols).filter(word => word.trim() !== "");
+    return text.split(regEx_for_splitting_wordsAndSymbols).filter(word => word.trim() !== "");
 }
 
 function calculateWordFrequency(text)
 {
     let wordFrequency = {};
-    let arrayOfAllWordsAndSymbol = text.split(regExForSplittingWordsAndSymbols).filter(word => word.trim() !== "");
+    let arrayOfAllWordsAndSymbol = text.split(regEx_for_splitting_wordsAndSymbols).filter(word => word.trim() !== "");
     arrayOfAllWordsAndSymbol.forEach(element => {
-        if(wordFrequency[word])
+        if(wordFrequency[element])
         {
-            wordFrequency[word]++;
+            wordFrequency[element]++;
         }
         else
         {
-            wordFrequency[word] = 1;
+            wordFrequency[element] = 1;
         }
     });
 
@@ -74,15 +76,15 @@ function wholeParaReverse (text)
 
 function sentencesReversed(text)
 {
-    return text.split(regExForSplittingUsingPunctuation).map(ele => ele.split(' ').reverse().join(' ')).join();
+    return text.split(regEx_for_splitting_punctuation_only).map(ele => ele.split(' ').reverse().join(' ')).join('.');
 }
 
 function findPalindroms(text)
 {
-    let reversedWords = text.toLowerCase().split('').reverse().join('').split(' ').reverse().filter(word => !word.match(regExForSplittingUsingPunctuation));
+    let reversedWords = text.toLowerCase().split('').reverse().join("").split(' ').reverse().map((ele) => ele.split(regEx_for_splitting_using_punctuationAndSymbol)).flat(1).filter(Boolean);
 
-    let allWordsWithoutPunctuation = text.split(' ').filter(word => !word.split(regExForSplittingUsingPunctuation).match(regExForSplittingUsingPunctuation));
-
+    let allWordsWithoutPunctuation = text.toLowerCase().split(' ').map((ele) => ele.split(regEx_for_splitting_using_punctuationAndSymbol)).flat(1).filter(Boolean);
+    
     let palindromWords = [];
 
     reversedWords.forEach((word , index) => {
@@ -91,28 +93,27 @@ function findPalindroms(text)
             palindromWords = [...palindromWords, allWordsWithoutPunctuation[index]]
         }
     })
-
-    console.log(palindromWords);
 }
 
 function findUniqueWords(text)
 {
-
+    let frequency_of_words = calculateWordFrequency(text);
+    return Object.keys(frequency_of_words).filter(word => frequency_of_words[word] === 1)
 }
 
 function countVowels(text)
 {
-
+    return text.match(/[AEIOU]/ig)?.length || 0;
 }
 
-function countVowels(text)
+function countConsonants(text)
 {
-
+    return text.match(/[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]/ig)?.length || 0;
 }
 
 function countSentences(text)
 {
-
+    return text.match(regEx_for_splitting_sentences).length;
 }
 
 function displayResults(charCount, wordCount, wordsFrequency, longestWord, reversedPara, reversedSentences, palindroms, allUpperCase, allLowerCase, uniqueWords, vowelsCount, consonantsCount, sentencesCount)
