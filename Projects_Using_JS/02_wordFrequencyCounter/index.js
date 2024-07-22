@@ -113,10 +113,51 @@ function countConsonants(text)
 
 function countSentences(text)
 {
-    return text.match(regEx_for_splitting_sentences).length;
+    return text.match(regEx_for_splitting_sentences).length || 0;
+}
+
+// function to create table -->
+function createTable(id)
+{
+    let existingDiv = document.getElementById(id + 'Div');
+    if (existingDiv)
+    {
+        return;
+    }
+    let mainStatisticsDiv = document.getElementById('mainStatisticsDiv');
+    let div = document.createElement('div')
+    div.setAttribute('id', id + 'Div');
+
+    let table = document.createElement('table')
+    table.setAttribute('id', id + 'Table');
+
+    let thead = document.createElement('thead');
+    thead.setAttribute('id', id + '_thead');
+
+    let tbody = document.createElement('tbody');
+    tbody.setAttribute('id', id + '_tbody');
+
+    let headingRow = document.createElement('tr');
+    headingRow.setAttribute('id', id + '_headingRow');
+
+    let headingCell = document.createElement('th');
+    headingCell.setAttribute('id', id + '_headingCell');
+
+
+    mainStatisticsDiv.appendChild(div);
+    div.appendChild(table);
+    table.appendChild(thead);
+    table.appendChild(tbody);
+    tbody.appendChild(headingRow);
+    headingRow.appendChild(headingCell);
 }
 
 function displayResults(charCount, wordCount, wordsFrequency, longestWord, reversedPara, reversedSentences, palindroms, allUpperCase, allLowerCase, uniqueWords, vowelsCount, consonantsCount, sentencesCount)
 {
-
+    createTable('charCount');
+    let charCountTable = document.getElementById('charCountTable');
+    let tableHeading = charCountTable.querySelector('thead');
+    tableHeading.textContent = "CharCount"
+    let headerCell = charCountTable.querySelector('th');
+    headerCell.textContent = 'Number of Characters in Paragraph: ' + charCount;
 }
