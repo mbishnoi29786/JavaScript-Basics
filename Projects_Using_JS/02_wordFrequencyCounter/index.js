@@ -43,7 +43,7 @@ function countCharacters(text)
 
 function countWords(text)
 {
-    return text.split(regEx_for_splitting_wordsAndSymbols).filter(word => word.trim() !== "");
+    return text.split(regEx_for_splitting_wordsAndSymbols).filter(word => word.trim() !== "" || '.').length;
 }
 
 function calculateWordFrequency(text)
@@ -156,8 +156,17 @@ function displayResults(charCount, wordCount, wordsFrequency, longestWord, rever
 {
     createTable('charCount');
     let charCountTable = document.getElementById('charCountTable');
-    let tableHeading = charCountTable.querySelector('thead');
-    tableHeading.textContent = "CharCount"
-    let headerCell = charCountTable.querySelector('th');
-    headerCell.textContent = 'Number of Characters in Paragraph: ' + charCount;
+    let charTableHeading = charCountTable.querySelector('thead');
+    let charHeaderRow = charCountTable.querySelector('tr');
+    charTableHeading.textContent = "Charcter Count"
+    charHeaderRow.textContent = 'Number of Characters in Paragraph: ' + charCount;
+
+    createTable('wordCount');
+    let wordCountTable = document.getElementById('wordCountTable');
+    let wordTableHeading = wordCountTable.querySelector('thead');
+    let wordHeaderRow = wordCountTable.querySelector('tr');
+    wordTableHeading.textContent = 'Word Count';
+    wordHeaderRow.textContent = 'Number of Words in Paragraph: ' + wordCount;
+    
+
 }
