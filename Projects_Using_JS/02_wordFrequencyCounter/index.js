@@ -43,7 +43,7 @@ function countCharacters(text)
 
 function countWords(text)
 {
-    return text.split(regEx_for_splitting_wordsAndSymbols).filter(word => word.trim() !== "" || '.').length;
+    return text.match(/\w+/g).length;
 }
 
 function calculateWordFrequency(text)
