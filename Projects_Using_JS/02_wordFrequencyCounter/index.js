@@ -4,7 +4,7 @@ function analyze()
 {
     // fetching the input from the paragraph -->
     let inputParagraph = document.getElementById('inputPara').value.trim();
-
+    console.log(countSentences(inputParagraph));
     if(inputParagraph === '')
     {
         // if input is empty -->
@@ -113,7 +113,7 @@ function countConsonants(text)
 
 function countSentences(text)
 {
-    return text.match(regEx_for_splitting_sentences).length || 0;
+    return text.match(regEx_for_splitting_sentences)?.length || 0 ;
 }
 
 // function to create table -->
