@@ -139,11 +139,8 @@ function createTable(id, headings)
     let headingRow = document.createElement('tr');
     thead.appendChild(headingRow);
 
-    for (let heading of headings) {
-        let headingCell = document.createElement('th');
-        headingCell.textContent = heading;
-        headingRow.appendChild(headingCell);
-    }
+    let headingCell = document.createElement('th');
+    headingRow.appendChild(headingCell);
 
     let tbody = document.createElement('tbody');
     tbody.setAttribute('id', id + '_tbody');
@@ -155,34 +152,6 @@ function createTable(id, headings)
 
 function displayResults(charCount, wordCount, wordsFrequency, longestWord, reversedPara, reversedSentences, palindroms, allUpperCase, allLowerCase, uniqueWords, vowelsCount, consonantsCount, sentencesCount)
 {
-    createTable('charCount', ['Statistic', 'Value']);
-    let charCountTable = document.getElementById('charCountTable');
-    let charTableBody = charCountTable.querySelector('tbody');
-
-    let charHeaderRow = document.createElement('tr');
-    charTableBody.appendChild(charHeaderRow);
-
-    let charStatCell = document.createElement('td');
-    charStatCell.textContent = "Number of Characters in Paragraph:";
-    charHeaderRow.appendChild(charStatCell);
-
-    let charValueCell = document.createElement('td');
-    charValueCell.textContent = charCount;
-    charHeaderRow.appendChild(charValueCell);
-
-    createTable('wordCount', ['Statistic', 'Value']);
-    let wordCountTable = document.getElementById('wordCountTable');
-    let wordTableBody = wordCountTable.querySelector('tbody');
-
-    let wordHeaderRow = document.createElement('tr');
-    wordTableBody.appendChild(wordHeaderRow);
-
-    let wordStatCell = document.createElement('td');
-    wordStatCell.textContent = "Number of Words in Paragraph:";
-    wordHeaderRow.appendChild(wordStatCell);
-
-    let wordValueCell = document.createElement('td');
-    wordValueCell.textContent = wordCount;
-    wordHeaderRow.appendChild(wordValueCell);
+    
     
 }
