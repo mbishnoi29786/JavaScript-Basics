@@ -11,6 +11,11 @@ function analyze()
         displayError('Please Enter Some text to analyze!');
         return;
     }
+    else
+    {
+        document.getElementById('errorDiv').textContent = '';
+        document.getElementById('errorDiv').remove();
+    }
 
     // if input is not empty -->
     // analysis --> 
@@ -117,7 +122,7 @@ function countSentences(text)
 }
 
 // function to create table -->
-function createTable(id, headings) 
+function createTable(id) 
 {
     let existingDiv = document.getElementById(id + 'Div');
     if (existingDiv) 
@@ -152,6 +157,21 @@ function createTable(id, headings)
 
 function displayResults(charCount, wordCount, wordsFrequency, longestWord, reversedPara, reversedSentences, palindroms, allUpperCase, allLowerCase, uniqueWords, vowelsCount, consonantsCount, sentencesCount)
 {
+    createTable('charCount');
     
-    
+}
+
+function displayError()
+{
+    let divAlreadyExists = document.getElementById('errorDiv');
+    if(divAlreadyExists)
+    {
+        return;
+    }
+    let Error = 'Please Enter a Paragraph to analyze.';
+    let mainStatisticsDiv = document.getElementById('mainStatisticsDiv');
+    let errorDiv = document.createElement('div');
+    errorDiv.setAttribute('id', 'errorDiv');
+    errorDiv.textContent = Error;
+    mainStatisticsDiv.appendChild(errorDiv);
 }
