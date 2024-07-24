@@ -117,56 +117,72 @@ function countSentences(text)
 }
 
 // function to create table -->
-function createTable(id)
+function createTable(id, headings) 
 {
     let existingDiv = document.getElementById(id + 'Div');
-    if (existingDiv)
+    if (existingDiv) 
     {
         return;
     }
+
     let mainStatisticsDiv = document.getElementById('mainStatisticsDiv');
-    let div = document.createElement('div')
+    let div = document.createElement('div');
     div.setAttribute('id', id + 'Div');
 
-    let table = document.createElement('table')
+    let table = document.createElement('table');
     table.setAttribute('id', id + 'Table');
+    div.appendChild(table);
 
     let thead = document.createElement('thead');
-    thead.setAttribute('id', id + '_thead');
+    table.appendChild(thead);
+
+    let headingRow = document.createElement('tr');
+    thead.appendChild(headingRow);
+
+    for (let heading of headings) {
+        let headingCell = document.createElement('th');
+        headingCell.textContent = heading;
+        headingRow.appendChild(headingCell);
+    }
 
     let tbody = document.createElement('tbody');
     tbody.setAttribute('id', id + '_tbody');
-
-    let headingRow = document.createElement('tr');
-    headingRow.setAttribute('id', id + '_headingRow');
-
-    let headingCell = document.createElement('th');
-    headingCell.setAttribute('id', id + '_headingCell');
-
+    table.appendChild(tbody);
 
     mainStatisticsDiv.appendChild(div);
-    div.appendChild(table);
-    table.appendChild(thead);
-    table.appendChild(tbody);
-    tbody.appendChild(headingRow);
-    headingRow.appendChild(headingCell);
 }
+
 
 function displayResults(charCount, wordCount, wordsFrequency, longestWord, reversedPara, reversedSentences, palindroms, allUpperCase, allLowerCase, uniqueWords, vowelsCount, consonantsCount, sentencesCount)
 {
-    createTable('charCount');
+    createTable('charCount', ['Statistic', 'Value']);
     let charCountTable = document.getElementById('charCountTable');
-    let charTableHeading = charCountTable.querySelector('thead');
-    let charHeaderRow = charCountTable.querySelector('tr');
-    charTableHeading.textContent = "Charcter Count"
-    charHeaderRow.textContent = 'Number of Characters in Paragraph: ' + charCount;
+    let charTableBody = charCountTable.querySelector('tbody');
 
-    createTable('wordCount');
+    let charHeaderRow = document.createElement('tr');
+    charTableBody.appendChild(charHeaderRow);
+
+    let charStatCell = document.createElement('td');
+    charStatCell.textContent = "Number of Characters in Paragraph:";
+    charHeaderRow.appendChild(charStatCell);
+
+    let charValueCell = document.createElement('td');
+    charValueCell.textContent = charCount;
+    charHeaderRow.appendChild(charValueCell);
+
+    createTable('wordCount', ['Statistic', 'Value']);
     let wordCountTable = document.getElementById('wordCountTable');
-    let wordTableHeading = wordCountTable.querySelector('thead');
-    let wordHeaderRow = wordCountTable.querySelector('tr');
-    wordTableHeading.textContent = 'Word Count';
-    wordHeaderRow.textContent = 'Number of Words in Paragraph: ' + wordCount;
-    
+    let wordTableBody = wordCountTable.querySelector('tbody');
 
+    let wordHeaderRow = document.createElement('tr');
+    wordTableBody.appendChild(wordHeaderRow);
+
+    let wordStatCell = document.createElement('td');
+    wordStatCell.textContent = "Number of Words in Paragraph:";
+    wordHeaderRow.appendChild(wordStatCell);
+
+    let wordValueCell = document.createElement('td');
+    wordValueCell.textContent = wordCount;
+    wordHeaderRow.appendChild(wordValueCell);
+    
 }
