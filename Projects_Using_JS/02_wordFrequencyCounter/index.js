@@ -158,6 +158,10 @@ function createTable(id)
 function displayResults(charCount, wordCount, wordsFrequency, longestWord, reversedPara, reversedSentences, palindroms, allUpperCase, allLowerCase, uniqueWords, vowelsCount, consonantsCount, sentencesCount)
 {
     createTable('charCount');
+    let charCountTable = document.getElementById('charCountTable');
+    let charCountRow = charCountTable.querySelector('tr');
+    let charCountHeading = charCountTable.querySelector('thead');
+
     
 }
 
