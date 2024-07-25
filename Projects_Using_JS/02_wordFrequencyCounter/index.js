@@ -13,8 +13,12 @@ function analyze()
     }
     else
     {
-        document.getElementById('errorDiv').textContent = '';
-        document.getElementById('errorDiv').remove();
+        //To Remove error message if it exists -->
+        let errorDiv = document.getElementById('errorDiv');
+        if (errorDiv) 
+        {
+            errorDiv.remove();
+        }
     }
 
     // if input is not empty -->
@@ -98,6 +102,7 @@ function findPalindroms(text)
             palindromWords = [...palindromWords, allWordsWithoutPunctuation[index]]
         }
     })
+    return palindromWords;
 }
 
 function findUniqueWords(text)
@@ -122,48 +127,110 @@ function countSentences(text)
 }
 
 // function to create table -->
-function createTable(id) 
-{
-    let existingDiv = document.getElementById(id + 'Div');
-    if (existingDiv) 
-    {
-        return;
+function createTable(id, headings, data) {
+    let existingTable = document.getElementById(id + 'Table');
+    if (existingTable) {
+        existingTable.parentNode.removeChild(existingTable);
     }
 
     let mainStatisticsDiv = document.getElementById('mainStatisticsDiv');
-    let div = document.createElement('div');
-    div.setAttribute('id', id + 'Div');
-
     let table = document.createElement('table');
     table.setAttribute('id', id + 'Table');
-    div.appendChild(table);
 
-    let thead = document.createElement('thead');
-    table.appendChild(thead);
+    // Create thead if headings are provided
+    if (headings && headings.length > 0) {
+        let thead = document.createElement('thead');
+        let headingRow = document.createElement('tr');
+        headings.forEach(headingText => {
+            let headingCell = document.createElement('th');
+            headingCell.textContent = headingText;
+            headingRow.appendChild(headingCell);
+        });
+        thead.appendChild(headingRow);
+        table.appendChild(thead);
+    }
 
-    let headingRow = document.createElement('tr');
-    thead.appendChild(headingRow);
+    // Create tbody and populate with data rows
+    if (data && data.length > 0) {
+        let tbody = document.createElement('tbody');
+        data.forEach(rowData => {
+            let row = document.createElement('tr');
+            rowData.forEach(cellData => {
+                let cell = document.createElement('td');
+                cell.textContent = cellData;
+                row.appendChild(cell);
+            });
+            tbody.appendChild(row);
+        });
+        table.appendChild(tbody);
+    }
 
-    let headingCell = document.createElement('th');
-    headingRow.appendChild(headingCell);
-
-    let tbody = document.createElement('tbody');
-    tbody.setAttribute('id', id + '_tbody');
-    table.appendChild(tbody);
-
-    mainStatisticsDiv.appendChild(div);
+    mainStatisticsDiv.appendChild(table);
 }
 
 
-function displayResults(charCount, wordCount, wordsFrequency, longestWord, reversedPara, reversedSentences, palindroms, allUpperCase, allLowerCase, uniqueWords, vowelsCount, consonantsCount, sentencesCount)
-{
-    createTable('charCount');
-    let charCountTable = document.getElementById('charCountTable');
-    let charCountRow = charCountTable.querySelector('tr');
-    let charCountHeading = charCountTable.querySelector('thead');
+function displayResults(charCount, wordCount, wordsFrequency, longestWord, reversedPara, reversedSentences, palindroms, allUpperCase, allLowerCase, uniqueWords, vowelsCount, consonantsCount, sentencesCount) {
+    // Create table for Character Count
+    createTable('charCount', ['Category', 'Count'], [
+        ['Character Count', charCount]
+    ]);
 
-    
+    // Create table for Word Count
+    createTable('wordCount', ['Category', 'Count'], [
+        ['Word Count', wordCount]
+    ]);
+
+    // Create table for Word Frequency
+    let wordsFrequencyArray = Object.entries(wordsFrequency).map(([word, count]) => [word, count]);
+    createTable('wordsFrequency', ['Word', 'Frequency'], wordsFrequencyArray);
+
+    // Create table for Longest Word
+    createTable('longestWord', ['Longest Word'], [
+        [longestWord]
+    ]);
+
+    // Create table for Reversed Paragraph
+    createTable('reversedPara', ['Reversed Paragraph'], [
+        [reversedPara]
+    ]);
+
+    // Create table for Reversed Sentences
+    let reversedSentencesArray = reversedSentences.split('.').filter(sentence => sentence.trim() !== '').map(sentence => [sentence]);
+    createTable('reversedSentences', ['Reversed Sentences'], reversedSentencesArray);
+
+    // Create table for Palindromes
+    createTable('palindromes', ['Palindromes'], palindroms.map(palindrome => [palindrome]));
+
+    // Create table for All Uppercase
+    createTable('allUpperCase', ['All Uppercase'], [
+        [allUpperCase]
+    ]);
+
+    // Create table for All Lowercase
+    createTable('allLowerCase', ['All Lowercase'], [
+        [allLowerCase]
+    ]);
+
+    // Create table for Unique Words
+    let uniqueWordsArray = uniqueWords.map(word => [word]);
+    createTable('uniqueWords', ['Unique Words'], uniqueWordsArray);
+
+    // Create table for Vowels Count
+    createTable('vowelsCount', ['Category', 'Count'], [
+        ['Vowels Count', vowelsCount]
+    ]);
+
+    // Create table for Consonants Count
+    createTable('consonantsCount', ['Category', 'Count'], [
+        ['Consonants Count', consonantsCount]
+    ]);
+
+    // Create table for Sentences Count
+    createTable('sentencesCount', ['Category', 'Count'], [
+        ['Sentences Count', sentencesCount]
+    ]);
 }
+
 
 function displayError()
 {
