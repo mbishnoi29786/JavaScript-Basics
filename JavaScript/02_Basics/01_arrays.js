@@ -37,3 +37,24 @@ In JavaScript, some array methods modify the original array (mutative methods), 
 13. flat / flatMap --> Creates a new array with all sub-array elements concatenated into it recursively up to the specified depth.
  */
 
+const myArr = new Array(1,2,3,4);
+
+// myArr.push(2);
+// myArr.push(2)
+// myArr.pop();
+// myArr.pop();
+// myArr.unshift(9);
+// myArr.shift();
+// console.log(myArr);
+
+
+// console.log(myArr.includes(9));
+// console.log(myArr.indexOf(9));
+
+// const newArr = myArr.join();
+// console.log(newArr);
+
+const myn1 = myArr.slice(1,3);
+const myn2 = myArr.splice(1,3);
+
+console.log(`My new array 1: ${myn1} and my new array 2: ${myn2} and the original array: ${myArr}`);
