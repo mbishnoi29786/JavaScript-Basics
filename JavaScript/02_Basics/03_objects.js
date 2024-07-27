@@ -61,3 +61,23 @@ let myObj =
 }
 
 console.log(typeof myObj[mySym]);
+
+// Object.freeze(myObj); // object has been freezed no new changes can be made
+
+// myObj.name = "bishnoi" 
+
+
+myObj.greetings = function () {
+    console.log("hello, World");
+    return 0;
+}
+
+myObj.greetingsTwo = function () {
+    console.log(`hello, World! It's me ${this.name} ${this["last name"]}`);
+    return 0;
+}
+
+// console.log(myObj.greetings);   // if we call it like this the function will not come it's refernce will
+console.log(myObj.greetings()); // in this the actual function runs
+
+console.log(myObj.greetingsTwo());

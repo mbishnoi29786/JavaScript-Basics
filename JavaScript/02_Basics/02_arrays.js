@@ -32,10 +32,10 @@ let myVar = '124 new obourn street';
 // console.log( Array.from(myVar)); // gives a new array if there is a string given 
 
 
-// console.log(Array.from({myName: "manish" })); // it will give an empty array as we have not defined from which the array should be generated keys or values
+console.log(Array.from({myName: "manish", email : "mbishnoi@example.com" }).keys()); // it will give an empty array as we have not defined from which the array should be generated keys or values
 
 
 let score1 = 100;
 let score2 = 200;
 let score3 = 300;
-console.log(Array.of(score1, score2, score3)); // it will give a new array by combining all the inputs given
+// console.log(Array.of(score1, score2, score3)); // it will give a new array by combining all the inputs given
