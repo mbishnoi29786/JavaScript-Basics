@@ -51,13 +51,13 @@ console.log(user[key]);  // Output: manish
 */
 
 // accessing a symbol in a object -->
-let sym = Symbol('description');
+const mySym = Symbol("key1");
 let myObj =
 {
     name: "manish",
     "last name": "bishnoi",
     email: "mbishnoi29786@gmail.com",
-    [sym]: 'value'
+    [mySym]: "mykey1"
 }
 
 console.log(typeof myObj[mySym]);
