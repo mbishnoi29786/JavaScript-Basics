@@ -19,6 +19,7 @@ console.log(abc);
 // navBar(company = "abc")
 
 // when we retrieve data from database it gives us data in json format which means it sometimes give as an unnamed object in which both the key and values are in string format except numbers and boolean 
+// json --> javaScript Object Notation
 // for example -->
 // {
 //     "name" : "abc",
