@@ -23,7 +23,8 @@ if ( a > 99) console.log(a), console.log("we can write multiple logs uisng ,");
 
 
 // ternery operator -->
-
+// syntax -->
+// condition ? true : false
 let b = a > 100? 200 : 100;  // it first checks the condition if the condition is true the value on the left side of : will be assigned. if not then the right side value goes in the b.
 console.log(b);
 
@@ -36,3 +37,12 @@ if (a > 10)
     }
 }
 
+
+// Nullish Coalescing Operator (??) : null undefined
+
+let x = 5 ?? 10; // it assigns the first value to the variable if that value is not null or undefined 
+let y = null ?? 10; // if the  first value is null or undefined then it will assign the second value.
+
+console.log(x , y);
+
+// it used when i retrieve data from backend and we are not sure if the value will come null or undefined so we assign one base value and the other is the one coming form database or backend
