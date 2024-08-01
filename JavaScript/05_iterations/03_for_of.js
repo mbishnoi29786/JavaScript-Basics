@@ -80,10 +80,31 @@ set.size: Returns the number of values in the set.
 
 const set = new Set([1, 2, 3, 4, 5]);
 
-set.add(6);
-console.log(set.has(3)); // true
-console.log(set.size); // 6
+// set.add(6);
+// console.log(set.has(3)); // true
+// console.log(set.size); // 6
 
-for (const value of set) {
-    console.log(`Value: ${value} of Set: ${set.has(value+1)}`);
-}
+// for (const value of set) {
+//     console.log(`Value: ${value} of Set: ${set.has(value+1)}`);
+// }
+
+
+// iterating over an object using for of loop (it's not recommended generally)
+
+let obj1 = {name : "abc", last : "bbc", age: 21}
+// Object prototype has various properties through which we can access any properties of an object
+
+// using Object.keys -->
+// for (const key of Object.keys(obj1)) {
+//     console.log(`Key : ${key}\nValue : ${obj1[key]} `);
+// }
+
+//using Object.values -->
+// for (const values of Object.values(obj1)) {
+//     console.log(`Values : ${values}`);
+// }
+
+// using Object.entries -->
+// for (const [keys, values] of Object.entries(obj1)) {
+//     console.log(`${keys}: ${values}`);
+// }
