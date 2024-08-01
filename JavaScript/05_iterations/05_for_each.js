@@ -35,7 +35,7 @@ const context = {prefix: 'Fruit: '};
 // Arrow Functions with forEach -->
 const numbers = [1, 2, 3, 4, 5];
 
-numbers.forEach(number => console.log(number));
+// numbers.forEach(number => console.log(number));
 
 /*
 Important Points -->
@@ -47,3 +47,34 @@ Break and Continue: Unlike for loops, forEach does not support the use of break 
 Asynchronous Callbacks: forEach does not handle asynchronous operations in the way you might expect. The loop does not wait for promises or asynchronous operations to complete. If you need to handle asynchronous code, use a different approach, such as a for...of loop with await.
 
 */
+
+let coding = ['ruby', 'cpp', 'python', 'java', 'javascript'];
+
+// coding.forEach((item => console.log(item))); // we can also pass the function here
+
+// function printItem (item) {
+//     console.log(item);
+// }
+
+// coding.forEach(printItem);
+
+// using with multiple objects inside an array -->
+
+let codingLanguages = [
+    {
+        languageName: 'Java',
+        languageFileName: 'java'
+    },
+    {
+        languageName: 'JavaScript',
+        languageFileName: 'js'
+    },
+    {
+        languageName: 'python',
+        languageFileName: 'py'
+    }
+]
+
+codingLanguages.forEach(item => console.log(item)); // to print all objects
+
+codingLanguages.forEach(item => console.log(item.languageFileName)); // to access the properties of each object inside an array
