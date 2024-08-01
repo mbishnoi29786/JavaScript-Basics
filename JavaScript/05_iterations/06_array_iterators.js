@@ -16,6 +16,9 @@ numbers.forEach(item => {
 })
 // console.log(nums); // [ 5, 6, 7, 8, 9, 10 ]
 
+// methods chaining -->
+const result = numbers.map((num) => num * 10).map((num) => num+1).filter(num => num > 40);
+console.log(result);
 
 const books = [
     {
