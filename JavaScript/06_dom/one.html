@@ -21,6 +21,17 @@
     <div>
         <h1 id="heading1" class="heading">DOM Manipulation</h1>
         <p class="para" id="para1">Lorem ipsum dolor sit amet.</p>
+        <p class="para2">Lorem ipsum dolor sit amet.</p>
+        <p class="para3">Lorem ipsum dolor sit amet.</p>
+        <p class="para4">Lorem ipsum dolor sit amet.</p>
+        <label for="password">Password:
+            <input type="password" name="password" id="password">
+        </label>
+        <ul>
+            <li>One</li>
+            <li>Two</li>
+            <li>Three</li>
+        </ul>
     </div>
     <script>
         document.getElementById('heading1').style.borderRadius = '15px';
@@ -31,9 +42,19 @@
         para.setAttribute('id', 'para2');
         para.innerHTML = 'This is inserted using DOM Manipulation';
         document.getElementById('mainDiv').appendChild(para);
-
+        console.log(document.querySelector('input[type = "password"]'));
+        let myUL = document.querySelector('ul');
+        // let myLi = document.querySelector('li');
+        // myLi.style.padding = '10px';
+        myUL.style.backgroundColor = "#545454";
+        myUL.style.padding = '15px';
+        myUL.style.borderRadius = '15px';
+        
         /*
-        1. textContent and innerHTML are almost same except the textContent shows all the elements even those which are hidden using any css property.
+        1. textContent and innerText are almost same except the textContent shows all the elements even those which are hidden using any css property. there is one more innerHTML.
+        -- innerHTML gives us the HTML code as well if there is any other HTML tag is present inside the tag which we are looking for even if the display is hidden
+        2. using querySelector we can also select classes and ids using . and # for classes and ids respectively.
+        3. querySelectorAll -- querySelector only returns the first element it finds where as the querySelectorAll returns all the elements that are written in the tag
         */
     </script>
 </body>
