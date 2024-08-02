@@ -246,3 +246,17 @@ function displayError()
     errorDiv.textContent = Error;
     mainStatisticsDiv.appendChild(errorDiv);
 }
+
+
+function createTable1(id)
+{
+    let existingTable = document.getElementById(id + 'Table');
+    if(existingTable)
+    {
+        existingTable.parentNode.removeChild(existingTable);
+    }
+
+    let mainStatisticsDiv = document.getElementById('mainStatisticsDiv');
+    let table = document.createElement('table');
+    table.setAttribute('id', id + 'Table');
+}
