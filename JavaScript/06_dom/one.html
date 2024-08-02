@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation</title>
+    <style>
+        .bg-black
+        {
+            background-color: #212121;
+            color: aliceblue;
+        }
+        #heading1
+        {
+            background-color: #343434;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body class="bg-black">
+    <div>
+        <h1 id="heading1" class="heading">DOM Manipulation</h1>
+        <p class="para" id="para1">Lorem ipsum dolor sit amet.</p>
+    </div>
+    <script>
+        document.getElementById('heading1').style.borderRadius = '15px';
+        document.getElementById('para1').setAttribute('class', 'para1 extraClass');
+        document.querySelector('div').setAttribute('id', 'mainDiv');
+        document.getElementById('para1').textContent = "hello, World!";
+        let para = document.createElement('p');
+        para.setAttribute('id', 'para2');
+        para.innerHTML = 'This is inserted using DOM Manipulation';
+        document.getElementById('mainDiv').appendChild(para);
+
+        /*
+        1. textContent and innerHTML are almost same except the textContent shows all the elements even those which are hidden using any css property.
+        */
+    </script>
+</body>
+</html>
