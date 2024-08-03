@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation | Parent Child Concepts</title>
+</head>
+<body style="background-color: #121212; color: #fff;">
+    <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+    </div>
+    <div class="parent2">
+        <div class="month">January</div>
+        <div class="month">February</div>
+        <div class="month">March</div>
+        <div class="month">April</div>
+    </div>
+    <script>
+        let parent = document.querySelector('.parent');
+        // console.log(parent);
+        // console.log(parent.children[0].innerHTML);
+
+        for(let i = 0; i < parent.children.length; i++)
+        {
+            console.log(parent.children[i].innerHTML);
+        }
+        parent.children[1].style.color = 'orange';
+        // console.log(parent.firstElementChild);
+        // console.log(parent.lastElementChild);
+        // console.log(parent.parentElement);
+        // console.log(parent.nextElementSibling.style.color = 'gold');
+
+        console.log("Nodes: ", parent.childNodes);
+    </script>
+</body>
+</html>
