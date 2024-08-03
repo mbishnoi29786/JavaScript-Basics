@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation | createElement</title>
+</head>
+<body style="background-color: #121212; color: #fff;">
+    <div class="parent">One</div>
+</body>
+<script>
+    let div = document.createElement('div');
+    console.log(div);
+    div.id = Math.round(Math.random() * 10 + 1); 
+    div.className = 'parent2';
+    div.setAttribute('title', 'helloTitle'); 
+    div.style.backgroundColor = '#545454';
+    div.style.color = 'orange';
+    div.innerHTML = "Two";
+    document.querySelector('body').appendChild(div);
+</script>
+</html>
