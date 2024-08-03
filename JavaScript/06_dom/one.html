@@ -32,6 +32,11 @@
             <li>Two</li>
             <li>Three</li>
         </ul>
+        <ol>
+            <li class="list-item2">Hello,</li>
+            <li class="list-item2">World</li>
+            <li class="list-item2">It's me.</li>
+        </ol>
     </div>
     <script>
         document.getElementById('heading1').style.borderRadius = '15px';
@@ -44,12 +49,19 @@
         document.getElementById('mainDiv').appendChild(para);
         console.log(document.querySelector('input[type = "password"]'));
         let myUL = document.querySelector('ul');
-        // let myLi = document.querySelector('li');
-        // myLi.style.padding = '10px';
+        let myLi = document.querySelectorAll('li');
+        // myLi[0].style.color = '#121212';
+        myLi.forEach(li => li.style.color = "skyblue")
         myUL.style.backgroundColor = "#545454";
         myUL.style.padding = '15px';
         myUL.style.borderRadius = '15px';
         
+        // querySelectorAll gives us a node list on which we can perform forEach function of array
+
+        // className returns an HTMLCollection on which we can not perform any actions related to array so we first convert it to array using ARRAY.from()
+        let arrayList = Array.from(document.getElementsByClassName('list-item2'));
+        arrayList.forEach(item => item.style.fontSize = '20px');
+
         /*
         1. textContent and innerText are almost same except the textContent shows all the elements even those which are hidden using any css property. there is one more innerHTML.
         -- innerHTML gives us the HTML code as well if there is any other HTML tag is present inside the tag which we are looking for even if the display is hidden
