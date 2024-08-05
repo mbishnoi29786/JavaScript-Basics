@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Project | Color Scheme Switcher</title>
+</head>
+<style>
+    span
+    {
+        border: 3px solid black;
+        padding: 20px;
+        margin: 5px;
+    }
+</style>
+<body>
+    <h1>Color Scheme Switcher</h1><br>
+    <span class="button" id="grey"></span>
+    <span class="button" id="white"></span>
+    <span class="button" id="yellow"></span>
+    <span class="button" id="blue"></span>
+    <span class="button" id="purple"></span>
+    <br><br>
+    <h2>Click on any color to change the theme</h2>
+</body>
+<script>
+    function fill_span_color (color)
+    {   
+        let span = document.querySelector('#' + color);
+        span.style.backgroundColor = color;
+        
+    }
+    fill_span_color('grey');
+    fill_span_color('white');
+    fill_span_color('yellow');
+    fill_span_color('blue');
+    fill_span_color('purple');
+    const buttons = document.querySelectorAll('.button');
+    buttons.forEach(button => button.addEventListener('click', (e) => 
+    {
+        const body = document.querySelector('body');
+    body.style.backgroundColor = e.target.id;
+    }))
+    
+</script>
+</html>
