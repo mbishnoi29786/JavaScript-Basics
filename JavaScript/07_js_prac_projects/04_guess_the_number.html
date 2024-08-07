@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Maipulation | Guess The Number</title>
+    <script src="./04_guess_the_number.js" defer></script>
+</head>
+<body>
+    <div id="wrapper">
+        <h1>Number Guessing Game</h1>
+        <p>Try and Guess a random number between 1 and 100</p>
+        <p>You have 10 attempts to guess the right number</p>
+        <br>
+        <form class="form">
+            <label for="guessField" id="guess">Guess a Number</label>
+            <input type="text" name="guessField" id="guessField">
+            <input type="submit" value="Submit Guess" id="submitGuess">
+        </form>
+        <div class="resultsDiv">
+            <p>Previous Guess : 
+                <span id="prevGuesses"></span>
+            </p>
+            <p>Guesses Remaining: 
+                <sapn id="remainingGuesses">10</sapn>
+            </p>
+            <p id="lowOrHi"></p>
+        </div>
+    </div>
+</body>
+</html>
