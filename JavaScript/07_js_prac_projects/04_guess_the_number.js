@@ -6,14 +6,26 @@ const resultsDiv = document.querySelector('.resultsDiv');
 const prevGuesses = document.getElementById('prevGuesses');
 const remainingGuesses = document.getElementById('remainingGuesses');
 const lowOrHighMessage = document.getElementById('lowOrHi');
+const divChild3 = document.querySelector('div:nth-child(1)');
+console.log(divChild3);
+console.log(divChild3.querySelector('p:nth-child(1)'));
+const firstDiv3Child = divChild3.querySelector('p:nth-child(3)');
 
 
 const p = document.createElement('p');
+const button = document.createElement('button');
+button.id = 'restart';
+button.textContent = 'Restart';
+p.appendChild(button);
+
+
 
 let prevMoves = [];
-let numGuess = 1;
+let numGuess = 10;
 
 let playGame = true;
+
+remainingGuesses.textContent = numGuess;
 
 if(playGame)
 {
@@ -39,17 +51,22 @@ function validateGuess (guess)
     else
     {
         prevMoves = [...prevMoves, guess];
-        if (numGuess > 10)
+        console.log(numGuess);
+        if (numGuess < 1)
         {
-            displayGuess(guess);
+            document.querySelector('form').remove();
+            firstDiv3Child.appendChild(p);
             displayMessage(`Game Over. Random Number Was ${randomNumber}`);
             endGame();
         }
-        else
+        else if (numGuess > 0)
         {
             displayGuess(guess);
             checkGuess(guess);
+            firstDiv3Child.appendChild(p).remove();
         }
+
+        remainingGuesses.textContent = numGuess;
     }
 }
 
@@ -58,15 +75,15 @@ function checkGuess (guess)
 {
     if (guess > randomNumber)
     {
-        displayGuess(`Your Guess is Tooo high.`)
+        displayMessage(`Your Guess is Tooo high.`)
     }
     else if (guess < randomNumber)
     {
-        displayGuess(`Your Guess is Tooo Low.`)
+        displayMessage(`Your Guess is Tooo Low.`)
     }
     else if (guess === randomNumber)
     {
-        displayGuess(`Your Guess Was Right!!!`);
+        displayMessage(`Your Guess Was Right!!!`);
         endGame();
     }
 }
@@ -76,9 +93,8 @@ function displayGuess (guess)
 {
     userInput.value = '';
     prevGuesses.innerHTML = prevMoves;
-    numGuess++;
+    numGuess--;
     console.log(numGuess);
-    
 }
 
 // for dom manipulation -->
@@ -89,10 +105,11 @@ function displayMessage (message)
 
 function endGame()
 {
-
+    playGame = false;
 }
 
 function newGame()
 {
-
+    playGame = true;
+    numGuess = 10
 }
