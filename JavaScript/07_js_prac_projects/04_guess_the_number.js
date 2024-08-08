@@ -7,6 +7,7 @@ const prevGuesses = document.getElementById('prevGuesses');
 const remainingGuesses = document.getElementById('remainingGuesses');
 const lowOrHighMessage = document.getElementById('lowOrHi');
 
+
 const p = document.createElement('p');
 
 let prevMoves = [];
@@ -19,7 +20,7 @@ if(playGame)
     submit.addEventListener('click', (e) =>
     {
         e.preventDefault();
-        const guess = parseInt(userInput.value);
+        const guess = parseInt(userInput.value, 10);
         validateGuess(guess);
     })
 }
@@ -74,8 +75,10 @@ function checkGuess (guess)
 function displayGuess (guess)
 {
     userInput.value = '';
-    prevGuesses.appendChild(document.createTextNode(`${prevGuesses}`));
+    prevGuesses.innerHTML = prevMoves;
     numGuess++;
+    console.log(numGuess);
+    
 }
 
 // for dom manipulation -->
