@@ -11,9 +11,11 @@ console.log(divChild3);
 console.log(divChild3.querySelector('p:nth-child(1)'));
 const firstDiv3Child = divChild3.querySelector('p:nth-child(3)');
 const form = document.querySelector('form');
+let restartButtonExists ;
 
 
 const p = document.createElement('p');
+p.id = 'restartPara';
 const button = document.createElement('button');
 button.id = 'restart';
 button.textContent = 'Restart';
@@ -63,7 +65,10 @@ function validateGuess (guess)
         {
             displayGuess(guess);
             checkGuess(guess);
-            firstDiv3Child.appendChild(p).remove();
+            if (restartButtonExists != null)
+            {
+            document.getElementById('restartPara').remove();
+            }
         }
 
         remainingGuesses.textContent = numGuess;
@@ -108,6 +113,13 @@ function endGame()
     playGame = false;
     document.querySelector('form').remove();
     firstDiv3Child.appendChild(p);
+    restartButtonExists = document.getElementById('restart');
+    console.log(restartButtonExists);
+    
+    if (restartButtonExists != null)
+        {
+            restartButtonExists.addEventListener('click', newGame);
+        }
 }
 
 function newGame()
@@ -117,10 +129,8 @@ function newGame()
     prevGuesses.textContent = '';
     prevMoves = [];
     displayMessage('');
+    document.getElementById('restartPara').remove();
     firstDiv3Child.appendChild(form);
 }
 
-document.getElementById('restart').addEventListener('click', (e)=>
-{
-    newGame();
-})
+
