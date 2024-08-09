@@ -1,18 +1,17 @@
 // all varibales -->
-const randomNumber = parseInt(Math.random() * 100)
+let randomNumber = parseInt(Math.random() * 100)
 const userInput = document.getElementById('guessField');
 const submit = document.getElementById('submitGuess');
 const resultsDiv = document.querySelector('.resultsDiv');
 const prevGuesses = document.getElementById('prevGuesses');
 const remainingGuesses = document.getElementById('remainingGuesses');
 const showMessage = document.getElementById('showMessage');
-const divChild3 = document.querySelector('div:nth-child(1)');
-console.log(divChild3);
-console.log(divChild3.querySelector('p:nth-child(1)'));
-const firstDiv3Child = divChild3.querySelector('p:nth-child(3)');
+const wrapper = document.getElementById('wrapper');
+const body = document.querySelector('body');
 const form = document.querySelector('form');
 let restartButtonExists ;
 
+console.log(randomNumber);
 
 const p = document.createElement('p');
 p.id = 'restartPara';
@@ -112,8 +111,8 @@ function endGame()
 {
     playGame = false;
     document.querySelector('form').remove();
-    firstDiv3Child.appendChild(p);
-    restartButtonExists = document.getElementById('restart');
+    body.appendChild(p);
+    restartButtonExists = document.getElementById('restartPara');
     console.log(restartButtonExists);
     
     if (restartButtonExists != null)
@@ -130,7 +129,8 @@ function newGame()
     prevMoves = [];
     displayMessage('');
     document.getElementById('restartPara').remove();
-    firstDiv3Child.appendChild(form);
+    wrapper.appendChild(form);
+    randomNumber = parseInt(Math.random() * 100);
 }
 
 
