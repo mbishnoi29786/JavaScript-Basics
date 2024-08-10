@@ -36,6 +36,9 @@
         <li>
             <img src="https://e1.pxfuel.com/desktop-wallpaper/730/510/desktop-wallpaper-portgas-d-ace-anime-one-piece-anime-one-piece-2021.jpg" alt="Portgas D. Ace" id="fifthImage">
         </li>
+        <li>
+            <a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics" style="color: aliceblue;" id="mdnLink">MDN - JavaScript_basics</a>
+        </li>
     </ol>
 </body>
 <script>
@@ -54,18 +57,25 @@
     // }, false) // false is the 3 attribute of the addEventListener by default it is set to false 
 
     // event Propagation -- terms to focus -- event Bubbling, eventCapturing. Most of the time we use event Bubbling but there are some scenarios are there where we have to use event capturing
-    document.getElementById('images').addEventListener('click', (e)=>{
-        console.log('Clicked inside the ol.');
-    }, false)
-    document.getElementById('firstImage').addEventListener('click', (e)=>{
-        console.log('Clicked on the First Image.');
-        e.stopPropagation(); // to stop event to propagate from bottom to top
-    }, false)
+    // document.getElementById('images').addEventListener('click', (e)=>{
+    //     console.log('Clicked inside the ol.');
+    // }, false)
+    // document.getElementById('firstImage').addEventListener('click', (e)=>{
+    //     console.log('Clicked on the First Image.');
+    //     e.stopPropagation(); // to stop event to propagate from bottom to top
+    // }, false)
 
     // when we use the default false it the bubbling happens that means the events occur from bottom to top
     // when we use true the event capturing happens from top to bottom 
     
     // it heavily depends upon the use case like which one is important at the moment capturing or bubbling
+
+    // preventDefault()
+    document.getElementById('mdnLink').addEventListener('click',function (e){
+        e.preventDefault();
+        // e.stopPropagation();
+        console.log('click on mdn link');
+    }, false)
 
 
     // other Methods
@@ -77,5 +87,26 @@
     // target, toElement, srcElement -- most important, currTarget
     // clientX, clientY, screenX, screenY
     // altKey, ctrlKey, shiftKey, keyCode
+
+    // from real world scenario -->
+    // to hide display
+    // document.querySelector('#images').addEventListener('click', function(e){
+    //     // console.log(e.target);
+    //     e.target.parentNode.style.display = 'none';
+    // }, false)
+
+    document.querySelector('#images').addEventListener('click', function(e){
+        // console.log(e.target);
+        if (e.target.tagName === 'IMG')
+        {
+            let removeIt = e.target.parentNode;
+            removeIt.parentNode.removeChild(removeIt);
+        }
+        else
+        {
+            let removeIt = e.target.parentNode;
+            removeIt.remove();
+        }
+    }, false)
 </script>
 </html>
