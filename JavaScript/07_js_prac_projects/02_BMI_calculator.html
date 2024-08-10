@@ -55,6 +55,7 @@
             border: 2px solid #ddd;
             border-radius: 4px;
             font-size: 1em;
+            box-sizing: border-box;
         }
 
         form button {
@@ -101,12 +102,12 @@
         <form>
             <p>
                 <label for="height">Height In CM: 
-                    <input type="text" name="height" id="height">
+                    <input type="number" name="height" id="height" step="any" min="0" placeholder="e.g. 170">
                 </label>
             </p>
             <p>
                 <label for="weight">Weight in KG: 
-                    <input type="text" name="weight" id="weight">
+                    <input type="number" name="weight" id="weight" step="any" min="0" placeholder="e.g. 65">
                 </label>
             </p>
             <button id="BMI_Calculate" type="submit">Calculate</button>
@@ -121,13 +122,19 @@
     </div>
     <script>
         const form = document.querySelector('form');
+        const heightInput = document.getElementById('height');
+        const weightInput = document.getElementById('weight');
+        const result = document.getElementById('results');
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            const height = parseInt(document.getElementById('height').value);
-            const weight = parseInt(document.getElementById('weight').value);
-            const result = document.getElementById('results');
+            const height = parseFloat(heightInput.value);
+            const weight = parseFloat(weightInput.value);
+
+            // Clear previous results
+            result.innerHTML = '';
+            result.style.color = '#333';
 
             if (isNaN(height) || height <= 0) {
                 result.innerHTML = `Please enter a valid Height in CM.`;
