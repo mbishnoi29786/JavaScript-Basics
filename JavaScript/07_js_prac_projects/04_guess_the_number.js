@@ -95,7 +95,7 @@ function displayGuess (guess)
 // for dom manipulation -->
 function displayMessage (message)
 {
-    messagePara.textContent = message;
+    messagePara.innerHTML = `<h2>${message} </h2>`;
     showMessage.appendChild(messagePara);
 }
 
