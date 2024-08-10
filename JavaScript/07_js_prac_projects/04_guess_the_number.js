@@ -6,13 +6,11 @@ const resultsDiv = document.querySelector('.resultsDiv');
 const prevGuesses = document.getElementById('prevGuesses');
 const remainingGuesses = document.getElementById('remainingGuesses');
 const showMessage = document.getElementById('showMessage');
-const wrapper = document.getElementById('wrapper');
-const body = document.querySelector('body');
 const form = document.querySelector('form');
-let restartButtonExists ;
+const messagePara = document.createElement('p');
 
-console.log(randomNumber);
 
+// to append a para in which in can show restart button
 const p = document.createElement('p');
 p.id = 'restartPara';
 const button = document.createElement('button');
@@ -20,14 +18,13 @@ button.id = 'restart';
 button.textContent = 'Restart';
 p.appendChild(button);
 
-const messagePara = document.createElement('p');
-
 
 let prevMoves = [];
 let numGuess = 10;
 
 let playGame = true;
 
+// to show the remaining guesses at the start of the game
 remainingGuesses.textContent = numGuess;
 
 if(playGame)
@@ -57,19 +54,14 @@ function validateGuess (guess)
         console.log(numGuess);
         if (numGuess < 1)
         {
-            displayMessage(`Game Over. Random Number Was ${randomNumber}`);
+            displayMessage(`Game Over!! Random Number Was ${randomNumber}`);
             endGame();
         }
         else if (numGuess > 0)
         {
             displayGuess(guess);
             checkGuess(guess);
-            if (restartButtonExists != null)
-            {
-            document.getElementById('restartPara').remove();
-            }
         }
-
         remainingGuesses.textContent = numGuess;
     }
 }
@@ -79,11 +71,11 @@ function checkGuess (guess)
 {
     if (guess > randomNumber)
     {
-        displayMessage(`Your Guess is Tooo high.`)
+        displayMessage(`Your Guess is Tooo high!!`)
     }
     else if (guess < randomNumber)
     {
-        displayMessage(`Your Guess is Tooo Low.`)
+        displayMessage(`Your Guess is Tooo Low!!`)
     }
     else if (guess === randomNumber)
     {
@@ -107,20 +99,15 @@ function displayMessage (message)
     showMessage.appendChild(messagePara);
 }
 
+// to end the game 
 function endGame()
 {
     playGame = false;
-    document.querySelector('form').remove();
-    body.appendChild(p);
-    restartButtonExists = document.getElementById('restartPara');
-    console.log(restartButtonExists);
-    
-    if (restartButtonExists != null)
-        {
-            restartButtonExists.addEventListener('click', newGame);
-        }
+    document.querySelector('form').replaceWith(p);
+    document.getElementById('restartPara').addEventListener('click', newGame);    
 }
 
+// to start a new game 
 function newGame()
 {
     playGame = true;
@@ -128,9 +115,10 @@ function newGame()
     prevGuesses.textContent = '';
     prevMoves = [];
     displayMessage('');
-    document.getElementById('restartPara').remove();
-    wrapper.appendChild(form);
+    userInput.value = '';
+    document.getElementById('restartPara').replaceWith(form);
     randomNumber = parseInt(Math.random() * 100);
+    remainingGuesses.textContent = numGuess;
 }
 
 

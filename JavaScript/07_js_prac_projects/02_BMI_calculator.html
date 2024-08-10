@@ -3,7 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practice Project | BMI Calculator</title>
+    <title>BMI Calculator</title>
+    <style>
+        body, h1, p, form {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #444;
+        }
+
+        form p {
+            margin: 15px 0;
+        }
+
+        form label {
+            font-size: 1em;
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        form input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        form button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #28a745;
+            color: #fff;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        form button:hover {
+            background-color: #218838;
+        }
+
+        #results {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        #weight_guide {
+            margin-top: 20px;
+            font-size: 1em;
+            color: #555;
+        }
+
+        #weight_guide h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        #weight_guide p {
+            margin: 5px 0;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -21,55 +111,48 @@
             </p>
             <button id="BMI_Calculate" type="submit">Calculate</button>
         </form>
-        <br>
         <div id="results"></div>
         <div id="weight_guide">
             <h3>BMI Weight Guide</h3>
-            <p>Under Weight : Less than 18.6</p>
-            <p>Normal Weight Range : 18.6 and 24.9</p>
-            <p>Over Weight : Greater than 24.9</p>
+            <p>Underweight: Less than 18.6</p>
+            <p>Normal Weight Range: 18.6 to 24.9</p>
+            <p>Overweight: Greater than 24.9</p>
         </div>
     </div>
+    <script>
+        const form = document.querySelector('form');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const height = parseInt(document.getElementById('height').value);
+            const weight = parseInt(document.getElementById('weight').value);
+            const result = document.getElementById('results');
+
+            if (isNaN(height) || height <= 0) {
+                result.innerHTML = `Please enter a valid Height in CM.`;
+                result.style.color = 'red';
+            } else if (isNaN(weight) || weight <= 0) {
+                result.innerHTML = `Please enter a valid Weight in KG.`;
+                result.style.color = 'red';
+            } else {
+                const BMI = (weight / ((height * height) / 10000)).toFixed(2);
+                let resultText = `Your BMI is : ${BMI} `;
+                
+                if (BMI < 18.6) {
+                    resultText += '→ Underweight';
+                    result.style.color = '#ffc107'; // Yellow for underweight
+                } else if (BMI >= 18.6 && BMI <= 24.9) {
+                    resultText += '→ Normal Weight Range';
+                    result.style.color = '#28a745'; // Green for normal weight
+                } else if (BMI > 24.9) {
+                    resultText += '→ Overweight';
+                    result.style.color = '#dc3545'; // Red for overweight
+                }
+
+                result.innerHTML = resultText;
+            }
+        });
+    </script>
 </body>
-<script>
-    const form = document.querySelector('form');
-
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const height = parseInt(document.getElementById('height').value);
-        const weight = parseInt(document.getElementById('weight').value);
-        const result = document.getElementById('results');
-        
-        console.log(typeof height, typeof weight); // directly getting value will give us string so wee need to first convert it into integer
-
-        if (height == '' || height < 0 || isNaN(height))
-        {
-            result.innerHTML = `Please enter a valid Height!`;
-        }
-        else if (weight == '' || weight < 0 || isNaN(weight))
-        {
-            result.innerHTML = `Please enter a valid Weight!`;
-        }
-        else
-        {
-            const BMI = (weight / ((height * height) / 10000)).toFixed(2);
-            result.innerHTML = `Your BMI is : ${BMI}`
-
-            if (BMI < 18.6)
-            {
-                result.appendChild(document.createTextNode(' --> Under Weight Range'));
-            }
-            else if (BMI >= 18.6 && BMI <= 24.9)
-            {
-                result.appendChild(document.createTextNode(' --> Normal Weight Range'));
-            }
-            else if (BMI > 24.9)
-            {
-                result.appendChild(document.createTextNode(' --> OverWeight Weight Range'));
-            }
-        }
-        
-    })
-</script>
 </html>
