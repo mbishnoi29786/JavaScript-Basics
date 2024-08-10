@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events </title>
+    <style>
+        img
+        {
+            height: 500px;
+            width: 700px;
+        }
+        li
+        {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body style="background-color: #121212; color: aliceblue;">
+    <h1>Images</h1>
+    <ol id="images">
+        <li>
+            <img src="https://img.freepik.com/free-photo/colorful-design-with-spiral-design_188544-9588.jpg" alt="colorful-design-with-spiral-design" id="firstImage">
+        </li>
+
+        <li>
+            <img src="https://img.freepik.com/free-photo/majestic-mountain-peak-tranquil-winter-landscape-generated-by-ai_188544-15662.jpg" alt="majestic-mountain-peak-tranquil-winter-landscape" id="secondImage">
+        </li>
+
+        <li>
+            <img src="https://e1.pxfuel.com/desktop-wallpaper/791/347/desktop-wallpaper-one-piece-1366x768-group-sabo-one-piece.jpg" alt="Portgas D. Ace" id="thirdImage">
+        </li>
+        <li>
+            <img src="https://www.chromethemer.com/wallpapers/chromebook-wallpapers/images/960/roronoa-zoro-chromebook-wallpaper.jpg" alt="Luffy X Zoro" id="fourthImage">
+        </li>
+        <li>
+            <img src="https://e1.pxfuel.com/desktop-wallpaper/730/510/desktop-wallpaper-portgas-d-ace-anime-one-piece-anime-one-piece-2021.jpg" alt="Portgas D. Ace" id="fifthImage">
+        </li>
+    </ol>
+</body>
+<script>
+    // this approach does not give us the ability of propogation and give us less features
+    // document.getElementById('firstImage').onclick = function (){
+    //     alert('colorful-design-with-spiral-design');
+    // }
+
+
+
+    // instead use this -->
+    // document.getElementById('firstImage').addEventListener('click', (e)=>{
+    //     // alert('colorful-design-with-spiral-design');
+    //     console.log(e);
+        
+    // }, false) // false is the 3 attribute of the addEventListener by default it is set to false 
+
+    // event Propagation -- terms to focus -- event Bubbling, eventCapturing. Most of the time we use event Bubbling but there are some scenarios are there where we have to use event capturing
+    document.getElementById('images').addEventListener('click', (e)=>{
+        console.log('Clicked inside the ol.');
+    }, false)
+    document.getElementById('firstImage').addEventListener('click', (e)=>{
+        console.log('Clicked on the First Image.');
+        e.stopPropagation(); // to stop event to propagate from bottom to top
+    }, false)
+
+    // when we use the default false it the bubbling happens that means the events occur from bottom to top
+    // when we use true the event capturing happens from top to bottom 
+    
+    // it heavily depends upon the use case like which one is important at the moment capturing or bubbling
+
+
+    // other Methods
+    // attachEvent --> mostly used when IE was used
+    // Jquery - on
+
+    // things to read -->
+    // type, timeStamp, defaultPrevented
+    // target, toElement, srcElement -- most important, currTarget
+    // clientX, clientY, screenX, screenY
+    // altKey, ctrlKey, shiftKey, keyCode
+</script>
+</html>
