@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asynchronys Programming</title>
+</head>
+<body>
+    <h1>Asynchronys Programming</h1>
+    <h2>Hello World!</h2>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    // javascript -- it is a synchronyms, single threaded programming language. means runs the code line by line and wait for the completion of task before moving to next line.
+    // Execution context 
+    // execute one line of code at a time
+    // each operation wait for the last one to complete before executing
+    // blocking code --> block the flow of the program -- read file sync
+    // non blocking code --> does not block execution -- read file async
+
+    const sayHello = function(){
+        console.log("Hello World");
+    }
+    setTimeout(sayHello, 2000)
+
+    const changeGreet = function(){
+        document.querySelector('h2').textContent = `It's Me Manish Bishnoi.`
+    }
+    const changeName = setTimeout(changeGreet, 2000);
+
+    document.querySelector('#stop').addEventListener('click', function(){
+        clearTimeout(changeName);
+        console.log("STOPPED");
+        
+    })
+</script>
+</html>
