@@ -59,6 +59,8 @@
     </div>
     <h1>Response Text</h1>
     <p id="responseText"></p>
+    <p id="randomUserImage"></p>
+    
 </body>
 <script>
     // XMLHttpRequest -- to send and receive request -- there are other methods which can be used for this purpose this was the most famous one before the fetch
@@ -77,9 +79,10 @@
         if (xhr.readyState === 4)
         {
             console.log(this.responseText);
-            const data = JSON.parse(this.responseText)
+            const data = JSON.parse(this.responseText) // most of the time the response that comes from api is string so we need to parse it in JSON format 
             console.log(data);
-            document.getElementById('responseText').innerHTML = 'Random Mail fetched using api: ' + data.results[0].email;
+            document.getElementById('responseText').innerHTML = 'Random Mail: ' + data.results[0].email;
+            document.getElementById('randomUserImage').innerHTML = `<img src="${data.results[0].picture.large}" alt="randomUserImage">`
         }
     }
     xhr.send();
