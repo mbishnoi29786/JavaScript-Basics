@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Interval</title>
+</head>
+<body>
+    <h1>Asynchronys Programming</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <p id="time"></p>
+    <p id="status"></p>
+</body>
+<script>
+    let start;
+    document.getElementById('start').addEventListener('click', function(){
+        if (!start){
+            start = setInterval(changeTime,1000, 'Time: ');
+        }
+
+        function changeTime(str)
+        {
+            document.getElementById('time').innerHTML = str + new Date().toLocaleTimeString();
+            document.querySelector('#status').innerHTML = 'CLOCK STARTED.';
+        }
+    })
+
+    document.getElementById('stop').addEventListener('click', function (){
+        clearTimeout(start);
+        start = null; // better practice to save some space 
+        document.querySelector('#status').innerHTML = 'CLOCK STOPPED.';
+    })
+
+</script>
+</html>
