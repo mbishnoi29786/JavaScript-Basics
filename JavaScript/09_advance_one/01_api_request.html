@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XML API REQUEST</title>
+    <style>
+        table, th, td
+        {
+            border: 1px solid #e7e7e7;
+            border-radius: 3px;
+        }
+    .Table
+        {
+            background-color: #1c1c1c;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="Table">
+        <table>
+            <tr>
+                <th>Value</th>
+                <th>State</th>
+                <th>Description</th>
+                </tr>
+            <tr>
+                <td>0</td>
+                <td>UNSENT</td>
+                <td>Client has been created. open() not called yet.</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>OPENED</t>
+                <td>open() has been called.</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>HEADERS_RECEIVED</t>
+                <td>send() has been called, and headers and status are available.</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>LOADING</t>
+                <td>Downloading; responseText holds partial data.</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>DONE</t>
+                <td>The operation is complete.</td>
+            </tr>
+        </table>
+    </div>
+    
+</body>
+<script>
+    // XMLHttpRequest -- to send and receive request -- there are other methods which can be used for this purpose this was the most famous one before the fetch
+    // console.log(new XMLHttpRequest());   // it's a class so to make object we use new keyword means we need a new reference
+    const requestUrl = 'https://api.github.com/users/mbishnoi29786';
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', requestUrl); // open does't get called on it's own we need to use send to send the request because a lot of properties are added with time
+    console.log(xhr.readyState);
+    xhr.send();
+    
+</script>
+</html>
