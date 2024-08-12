@@ -57,15 +57,31 @@
             </tr>
         </table>
     </div>
-    
+    <h1>Response Text</h1>
+    <p id="responseText"></p>
 </body>
 <script>
     // XMLHttpRequest -- to send and receive request -- there are other methods which can be used for this purpose this was the most famous one before the fetch
     // console.log(new XMLHttpRequest());   // it's a class so to make object we use new keyword means we need a new reference
-    const requestUrl = 'https://api.github.com/users/mbishnoi29786';
+    const requestUrl = 'https://randomuser.me/api/';
     const xhr = new XMLHttpRequest();
     xhr.open('GET', requestUrl); // open does't get called on it's own we need to use send to send the request because a lot of properties are added with time
-    console.log(xhr.readyState);
+    console.log(xhr.readyState); // it only track once 
+
+    // to continuously track we use onreadystatechange
+    //onreadystatechange -- these subscriber model are widely used when we use firebase in which these are used to continuously moniter the state
+    xhr.onreadystatechange = function ()  
+    {
+        console.log(xhr.readyState); // this constantly moniters the state changes 
+        // to use the state when work is done
+        if (xhr.readyState === 4)
+        {
+            console.log(this.responseText);
+            const data = JSON.parse(this.responseText)
+            console.log(data);
+            document.getElementById('responseText').innerHTML = 'Random Mail fetched using api: ' + data.results[0].email;
+        }
+    }
     xhr.send();
     
 </script>
