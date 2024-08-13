@@ -96,7 +96,7 @@ const promiseFive = new Promise((resolve, reject)=>{
         }
         else
         {
-            reject('ERROR: Something Went Worng')
+            reject('ERROR: Something Went Wrong in 5th Promise')
         }
     }, 1000);
 })
@@ -113,3 +113,19 @@ async function consumePromiseFive() {
         console.log(error);
     }
 }
+
+consumePromiseFive();
+
+
+// using an api request -->
+async function getAllUsers() {
+    try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/users');
+        const data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.log('E: ', error);
+    }
+}
+
+getAllUsers();
