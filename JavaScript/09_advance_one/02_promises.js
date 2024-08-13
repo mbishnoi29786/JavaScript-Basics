@@ -41,91 +41,106 @@ new Promise((resolve, reject)=>{
     
 })
 
-const promiseThree = new Promise((resolve, reject)=>{
-    setTimeout(() => {
-        resolve({User: 'hello, World', email: 'helloWorld@example.com'});
-    }, 1000);
-})
+// const promiseThree = new Promise((resolve, reject)=>{
+//     setTimeout(() => {
+//         resolve({User: 'hello, World', email: 'helloWorld@example.com'});
+//     }, 1000);
+// })
 
 // the parameter we pass in the resolve can be accessed in then
-promiseThree.then((user)=>
-{
-    console.log(user);
-    console.log("Promise 3 resolved");
+// promiseThree.then((user)=>
+// {
+//     console.log(user);
+//     console.log("Promise 3 resolved");
     
-})
+// })
 
-const promiseFour = new Promise((resolve, reject)=>{
-    setTimeout(() => {
-        let error = true;
-        if (!error)
-        {
-            resolve({name: 'hello, World', email: 'helloWorld@example.com'});
-        }
-        else
-        {
-            reject('ERROR: Something Went Worng')
-        }
-    }, 1000);
-})
+// const promiseFour = new Promise((resolve, reject)=>{
+//     setTimeout(() => {
+//         let error = true;
+//         if (!error)
+//         {
+//             resolve({name: 'hello, World', email: 'helloWorld@example.com'});
+//         }
+//         else
+//         {
+//             reject('ERROR: Something Went Worng')
+//         }
+//     }, 1000);
+// })
 
 // promise chaining
-promiseFour
-.then((user)=>{
-    console.log(user);
-    return user.name; // return is used to pass the value to next then statement 
-})
-.then((userName)=>{
-    console.log(userName); // this will print the hello,World 
-})
-.catch((error)=>{
-    console.log(error);
-})
-.finally(()=>{
-    console.log('the promise is either resolved or rejected'); // this will run guranteed evn if the upper ones will run or not
-})
+// promiseFour
+// .then((user)=>{
+//     console.log(user);
+//     return user.name; // return is used to pass the value to next then statement 
+// })
+// .then((userName)=>{
+//     console.log(userName); // this will print the hello,World 
+// })
+// .catch((error)=>{
+//     console.log(error);
+// })
+// .finally(()=>{
+//     console.log('the promise is either resolved or rejected'); // this will run guranteed evn if the upper ones will run or not
+// })
 
 
 // using async await -->
-const promiseFive = new Promise((resolve, reject)=>{
-    setTimeout(() => {
-        let error = true;
-        if (!error)
-        {
-            resolve({name: 'async await', email: 'asyncAwait@example.com'});
-        }
-        else
-        {
-            reject('ERROR: Something Went Wrong in 5th Promise')
-        }
-    }, 1000);
-})
+// const promiseFive = new Promise((resolve, reject)=>{
+//     setTimeout(() => {
+//         let error = true;
+//         if (!error)
+//         {
+//             resolve({name: 'async await', email: 'asyncAwait@example.com'});
+//         }
+//         else
+//         {
+//             reject('ERROR: Something Went Wrong in 5th Promise')
+//         }
+//     }, 1000);
+// })
 
 // in async await we need to use try catch block to handle the resolve, reject state
-async function consumePromiseFive() {
-    try 
-    {
-        const response = await promiseFive;
-        console.log(response);
-    } 
-    catch (error) 
-    {
-        console.log(error);
-    }
-}
+// async function consumePromiseFive() {
+//     try 
+//     {
+//         const response = await promiseFive;
+//         console.log(response);
+//     } 
+//     catch (error) 
+//     {
+//         console.log(error);
+//     }
+// }
 
-consumePromiseFive();
+// consumePromiseFive();
 
 
 // using an api request -->
-async function getAllUsers() {
-    try {
-        const response = await fetch('https://jsonplaceholder.typicode.com/users');
-        const data = await response.json();
-        console.log(data);
-    } catch (error) {
-        console.log('E: ', error);
-    }
-}
+// async function getAllUsers() {
+//     try {
+//         const response = await fetch('https://jsonplaceholder.typicode.com/users');
+//         const data = await response.json();
+//         console.log(data);
+//     } catch (error) {
+//         console.log('E: ', error);
+//     }
+// }
 
-getAllUsers();
+// getAllUsers();
+
+
+// using then and catch
+// fetch returns a promise
+
+fetch('https://jsonplaceholder.typicode.com/users')
+.then((response)=>{
+    return response.json();
+})
+.then((data)=>{
+    console.log(data);
+})
+.catch((error)=>{
+    console.log('E: ', error);
+})
