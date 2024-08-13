@@ -40,3 +40,76 @@ new Promise((resolve, reject)=>{
     console.log("Promise 2 Consumed.");
     
 })
+
+const promiseThree = new Promise((resolve, reject)=>{
+    setTimeout(() => {
+        resolve({User: 'hello, World', email: 'helloWorld@example.com'});
+    }, 1000);
+})
+
+// the parameter we pass in the resolve can be accessed in then
+promiseThree.then((user)=>
+{
+    console.log(user);
+    console.log("Promise 3 resolved");
+    
+})
+
+const promiseFour = new Promise((resolve, reject)=>{
+    setTimeout(() => {
+        let error = true;
+        if (!error)
+        {
+            resolve({name: 'hello, World', email: 'helloWorld@example.com'});
+        }
+        else
+        {
+            reject('ERROR: Something Went Worng')
+        }
+    }, 1000);
+})
+
+// promise chaining
+promiseFour
+.then((user)=>{
+    console.log(user);
+    return user.name; // return is used to pass the value to next then statement 
+})
+.then((userName)=>{
+    console.log(userName); // this will print the hello,World 
+})
+.catch((error)=>{
+    console.log(error);
+})
+.finally(()=>{
+    console.log('the promise is either resolved or rejected'); // this will run guranteed evn if the upper ones will run or not
+})
+
+
+// using async await -->
+const promiseFive = new Promise((resolve, reject)=>{
+    setTimeout(() => {
+        let error = true;
+        if (!error)
+        {
+            resolve({name: 'async await', email: 'asyncAwait@example.com'});
+        }
+        else
+        {
+            reject('ERROR: Something Went Worng')
+        }
+    }, 1000);
+})
+
+// in async await we need to use try catch block to handle the resolve, reject state
+async function consumePromiseFive() {
+    try 
+    {
+        const response = await promiseFive;
+        console.log(response);
+    } 
+    catch (error) 
+    {
+        console.log(error);
+    }
+}
