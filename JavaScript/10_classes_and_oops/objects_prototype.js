@@ -47,7 +47,7 @@ dog.speak(); // Output: Animal speaks
 // Class Syntax
 // In modern JavaScript (ES6+), you can use the class syntax, which is syntactic sugar over the traditional prototype-based approach but works in the same way under the hood.
 
-class Person 
+class Person1
 {
     constructor(name) 
     {
@@ -60,7 +60,7 @@ class Person
     }
 }
 
-const manish1 = new Person('Manish');
+const manish1 = new Person1('Manish');
 manish1.greet(); // Output: Hello, my name is Manish
 
 
@@ -71,3 +71,92 @@ manish1.greet(); // Output: Hello, my name is Manish
 // Class Syntax: A modern syntax for creating constructor functions and managing prototypes more conveniently.
 
 
+// understanding this 
+function multiplyBy5 (num)
+{   
+    this.num = num
+    return this.num*5
+}
+
+console.log(multiplyBy5.power = 2);
+console.log(multiplyBy5.prototype);
+console.log(multiplyBy5(4));
+
+
+// some real world examples 
+// loginUser prototype
+function loginUser (username, isLogin)
+{
+    this.username = username;
+    this.isLogin = isLogin;
+}
+
+// Adding Method to loginUser
+loginUser.prototype.setIsLoginTrue = function ()
+{
+    this.isLogin = true;
+}
+
+// Adding method to loginUser 
+loginUser.prototype.setIsLoginFalse = function () 
+{
+    this.isLogin = false;
+}
+
+// Adding method to loginUser to check login Status of a user
+loginUser.prototype.printLoginStatus = function()
+{
+    console.log(`User: ${this.username} Login Status: ${this.isLogin}`);
+    
+}
+const user = new loginUser('Manish', false); // new keyword is used to create a new instance of the loginUser
+const user1 = new loginUser('Bishnoi', true);
+user.setIsLoginTrue();
+user.setIsLoginFalse();
+
+console.log(user);
+console.log(user1);
+console.log(user1.printLoginStatus());
+
+
+
+// Let's take example of an Library Management System
+
+// Step 1: Define the Constructor Function
+// First, we define a constructor function Book that initializes properties like title and author:
+
+function Book(title, author) 
+{
+    this.title = title;    // Initialize the book's title
+    this.author = author;  // Initialize the book's author
+}
+
+// Step 2: Add Common Methods to the Prototype
+// Next, we add methods to the Book prototype so that all book instances share these methods. This allows us to perform actions on any book object:
+
+Book.prototype.displayInfo = function() 
+{
+    console.log(`Title: ${this.title}, Author: ${this.author}`);
+};
+
+// Step 3: Create Instances Using new
+// We create new book objects using the new keyword. Each new book object will have its own title and author but share the displayInfo method:
+
+const book1 = new Book('1984', 'George Orwell');
+const book2 = new Book('To Kill a Mockingbird', 'Harper Lee');
+
+// Step 4: Use the Instances
+// We can now use our book objects and call the methods defined on the prototype:
+
+book1.displayInfo(); // Output: Title: 1984, Author: George Orwell
+book2.displayInfo(); // Output: Title: To Kill a Mockingbird, Author: Harper Lee
+
+// Explanation
+
+// Creating the Blueprint
+// The Book function acts like a blueprint for creating books. It defines what each book will have: a title and an author.
+// When we use new Book('1984', 'George Orwell'), JavaScript creates a new book object with the title "1984" and the author "George Orwell".
+// Sharing Common Features
+// By adding methods to Book.prototype, we ensure that all books can perform the same actions. For example, the displayInfo method is available to every book object, showing its title and author.
+// Creating and Using Books
+// When we create book1 and book2 using new, we get two separate book objects with their own data. Both share the displayInfo method, so they can both display their information.
