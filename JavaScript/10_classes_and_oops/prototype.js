@@ -101,3 +101,76 @@ console.log(title.isCaseInsensitiveMatch(searchQuery)); // Output: true
 // 2. Consider using ES6 classes or composition patterns to encapsulate functionality.
 // 3. Prefer utility functions or libraries to modify built-in objects.
 
+
+// __proto__ property of Object
+
+// __proto__ is a property that allows us to access or modify an object's prototype. It provides a way to interact with the internal prototype chain of an object.
+
+// Understanding __proto__:
+
+// 1. Prototype Chain:
+// --> In JavaScript, each object has a hidden internal property called [[Prototype]] (often accessible through Object.getPrototypeOf()), which refers to another object. This creates a prototype chain used for inheritance.
+// --> __proto__ is a non-standard way to directly access or modify this [[Prototype]] property.
+
+// Accessing Prototypes:
+// we can use __proto__ to get or set an object's prototype.
+// Example: Accessing and Modifying Prototypes
+const animal = {
+    species: 'Unknown',
+    speak() {
+        console.log(`I am a ${this.species}`);
+    }
+};
+
+const dog = {
+    breed: 'Labrador'
+};
+
+// Set dog’s prototype to animal
+dog.__proto__ = animal;
+
+dog.speak(); // Output: I am a Unknown
+console.log(dog.species); // Output: Unknown
+
+// In this example, dog inherits from animal, so it has access to the speak method and the species property defined on animal.
+
+// Use Cases for __proto__
+
+// Prototype Inheritance:
+// You can use __proto__ to set up inheritance between objects. This can be useful in prototypal inheritance scenarios where you want to create an object that inherits from another.
+
+// Debugging and Exploration:
+// __proto__ can be useful for inspecting the prototype chain during debugging or exploration to understand the inheritance hierarchy of objects.
+
+// Important Considerations
+// Non-Standard and Deprecated:
+// __proto__ is non-standard and deprecated. Its use is discouraged in favor of standard methods like Object.getPrototypeOf() and Object.setPrototypeOf().
+
+// Standard methods for accessing and setting prototypes
+const animal1 = {
+    species: 'Unknown',
+    speak() {
+        console.log(`I am a ${this.species}`);
+    }
+};
+
+const dog = {
+    breed: 'Labrador'
+};
+
+// Set dog’s prototype to animal using standard method
+Object.setPrototypeOf(dog, animal1);
+
+dog.speak(); // Output: I am a Unknown
+console.log(dog.species); // Output: Unknown
+
+// Performance Concerns:
+// Modifying the prototype chain using __proto__ or Object.setPrototypeOf() can be slow and is generally considered bad practice for performance reasons. It’s better to set up prototypes at the time of object creation using constructors or classes.
+// Inheritance and Object Creation:
+// Modern JavaScript encourages using constructor functions, ES6 classes, or Object.create() for setting up prototypes and inheritance, rather than manipulating __proto__ directly.
+
+// Notes:
+// __proto__: A non-standard property used to access or modify an object's prototype.
+// Use Cases: It can be used for prototypal inheritance and debugging, but its use is discouraged.
+// Standard Alternatives: Prefer using Object.getPrototypeOf() and Object.setPrototypeOf() for interacting with object prototypes.
+// Modern Practices: Use constructor functions, ES6 classes, or Object.create() for more reliable and performant prototype management.
