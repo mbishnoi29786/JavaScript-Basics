@@ -65,3 +65,39 @@ let demoObj =
 // Object Prototype Methods: Adding methods to Object.prototype will affect all objects, which is usually not recommended unless you are very certain about the implications. It can interfere with other code or libraries that rely on the default behavior of objects.
 
 // Testing and Compatibility: When extending prototypes, make sure to test thoroughly to ensure that your changes do not break existing code or third-party libraries. Consider using other methods, like utility functions or classes, to avoid potential issues.
+
+
+// Without Polluting Global Sapce
+// Real life Example : Library Management System:
+// Define a utility method for arrays
+Array.prototype.findByTitle = function (title) {
+    return this.find(item => item.title.toLowerCase() === title.toLowerCase());
+};
+// Define a utility method for strings
+String.prototype.isCaseInsensitiveMatch = function (searchString) {
+    return this.toLowerCase().includes(searchString.toLowerCase());
+};
+
+// Example library items
+const libraryItems = [
+    { title: 'The Great Gatsby', type: 'book' },
+    { title: 'National Geographic', type: 'magazine' },
+    { title: 'To Kill a Mockingbird', type: 'book' }
+];
+
+// Example search
+const searchQuery = 'great';
+const title = 'The Great Gatsby';
+
+// Use the new method
+const foundItem = libraryItems.findByTitle('National Geographic');
+console.log(foundItem); // Output: { title: 'National Geographic', type: 'magazine' }
+console.log(title.isCaseInsensitiveMatch(searchQuery)); // Output: true
+
+// Notes:
+// By adding methods to prototypes, We can enhance the functionality of built-in objects in a controlled manner. However, to avoid global pollution and unintended side effects:
+
+// 1. Use naming conventions to avoid conflicts.
+// 2. Consider using ES6 classes or composition patterns to encapsulate functionality.
+// 3. Prefer utility functions or libraries to modify built-in objects.
+
