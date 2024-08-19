@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+</head>
+<body>
+    <h1>Task Manager</h1>
+    <ul id="task-list">
+        <li data-task-id="1">Task 1 <button class="complete-button">Complete</button></li>
+        <li data-task-id="2">Task 2 <button class="complete-button">Complete</button></li>
+        <li data-task-id="3">Task 3 <button class="complete-button">Complete</button></li>
+    </ul>
+    <script>
+        class TaskManager {
+            constructor() {
+                this.tasks = [
+                    { id: 1, name: 'Task 1', completed: false },
+                    { id: 2, name: 'Task 2', completed: false },
+                    { id: 3, name: 'Task 3', completed: false }
+                ];
+
+                // Bind event handler to instance
+                document.querySelectorAll('.complete-button').forEach(button => {
+                    button.addEventListener('click', this.markAsComplete.bind(this));
+                });
+            }
+
+            markAsComplete(event) {
+                const taskId = event.target.parentElement.getAttribute('data-task-id');
+                const task = this.tasks.find(t => t.id == taskId);
+                if (task) {
+                    task.completed = true;
+                    event.target.parentElement.style.textDecoration = 'line-through';
+                    console.log(`Task ${taskId} marked as complete.`);
+                }
+            }
+        }
+
+        const taskManager = new TaskManager();
+    </script>
+</body>
+</html>
