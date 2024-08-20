@@ -47,3 +47,12 @@ for (let [key, value] of Object.entries(myDescriptorObj)) {
         console.log(`${key} : ${value}`); // Output: Property : Personal PC 1
     }
 }
+
+
+// Notes :
+
+// Property Descriptors in JavaScript are part of the language’s Object Properties management. They provide a way to control the behavior of properties, such as:
+
+// Whether a property can be changed (writable).
+// Whether a property will appear during enumeration (enumerable).
+// Whether the property’s attributes can be further modified (configurable).
